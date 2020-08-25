@@ -1,0 +1,21 @@
+[submodule "nvim/.config/nvim/bundle/Vundle.vim"]
+	path = nvim/.config/nvim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule "dwm/.dwm"]
+	path = dwm/.dwm
+	url = git@github.com:phat-sumo/dwm.git
+[submodule "st/.st"]
+	path = st/.st
+	url = git@github.com:phat-sumo/st.git
+[submodule "dwmblocks/.dwmblocks"]
+	path = dwmblocks/.dwmblocks
+	url = git@github.com:phat-sumo/dwmblocks.git
+[submodule "hosts"]
+	path = hosts
+	url = git@bitbucket.org:phat-sumo/hosts.git
+[submodule "bg"]
+	path = bg
+	url = git@github.com:phat-sumo/bg.git
+[submodule "dmenu/.dmenu"]
+	path = dmenu/.dmenu
+	url = git@github.com:phat-sumo/dmenu.git
