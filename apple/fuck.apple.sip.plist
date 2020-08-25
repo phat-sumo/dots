@@ -1,0 +1,20 @@
+<!-- keep apple from fucking remounting root as readonly every time i reboot -->
+<!-- place in /Library/LaunchDaemons/ and load with `sudo launchctl load` -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>fuck.apple.sip</string>
+
+    <key>OnDemand</key>
+    <false/>
+
+    <key>ProgramArguments</key>
+    <array>
+            <string>mount</string>
+            <string>-uw</string>
+            <string>/</string>
+    </array>
+</dict>
+</plist>
