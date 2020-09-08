@@ -11,6 +11,11 @@
 #
 #█▓▒░ aliases
 
+# man for zsh builtins
+unalias run-help
+autoload run-help
+alias zshman="run-help"
+
 alias vim="nvim"
 alias vi="nvim"
 alias godown="cd ~/Downloads"
@@ -18,6 +23,7 @@ alias cleardown="rm -rf ~/Downloads/*"
 eval $(thefuck --alias)
 alias mci="sudo make clean install; mv *.diff patches/"
 alias zzz="sudo zzz"
+alias ZZZ="sudo ZZZ"
 alias p="patch -p1 <"
 
 if [[ $OS =~ "Linux" ]]; then

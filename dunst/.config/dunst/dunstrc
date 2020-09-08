@@ -1,5 +1,5 @@
 [global]
-    font = "Fira Code Regular 10"
+    font = "Monoid 8"
     allow_markup = yes
     format = "<b>%s %p</b>\n%b"
     sort = yes
@@ -18,7 +18,7 @@
     separator_color = auto
     startup_notification = false
     transparency = 0
-    dmenu = /usr/bin/dmenu -p dunst:
+    dmenu = /usr/local/bin/dmenu -p dunst:
 
 [frame]
     width = 0
@@ -28,6 +28,7 @@
     close = ctrl+space
     close_all = ctrl+shift+space
     context = ctrl+shift+period
+    history = ctrl+shift+comma
 
 [urgency_low]
     background = "#262626"
