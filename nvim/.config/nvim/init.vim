@@ -1,5 +1,6 @@
 set nocompatible
 filetype off
+set guicursor=
 
 " Let Vundle handle all vim plugins.
 set rtp+=~/.config/nvim/bundle/Vundle.vim

@@ -86,9 +86,20 @@ function vi_mode_prompt_info() {
   echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
 }
 
+function check_last_exit_code() {
+  local LAST_EXIT_CODE=$?
+  if [[ $LAST_EXIT_CODE -ne 0 ]]; then
+    local EXIT_CODE_PROMPT=' '
+    #EXIT_CODE_PROMPT+="%{$fg[magenta]%}-%{$reset_color%}"
+    EXIT_CODE_PROMPT+="%{$fg_bold[magenta]%}$LAST_EXIT_CODE%{$reset_color%}"
+    #EXIT_CODE_PROMPT+="%{$fg[magenta]%}-%{$reset_color%}"
+    echo "$EXIT_CODE_PROMPT"
+  fi
+}
+
 # define right prompt, if it wasn't defined by a theme
 if [[ "$RPS1" == "" && "$RPROMPT" == "" ]]; then
-  RPS1='$(vi_mode_prompt_info)'
+  RPS1='$(check_last_exit_code) $(vi_mode_prompt_info)'
 fi
 
 if [[ $OS =~ "Mac" ]]; then

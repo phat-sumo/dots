@@ -21,8 +21,8 @@
     dmenu = /usr/local/bin/dmenu -p dunst:
 
 [frame]
-    width = 0
-    color = "#000000"
+    width = 2
+    color = "#87ffff"
 
 [shortcuts]
     close = ctrl+space
