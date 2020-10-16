@@ -25,6 +25,8 @@ alias mci="sudo make clean install; mv *.diff patches/"
 alias zzz="sudo zzz"
 alias ZZZ="sudo ZZZ"
 alias p="patch -p1 <"
+alias mcc="musl-gcc -static"
+alias less="less -R"
 
 if [[ $OS =~ "Linux" ]]; then
   alias ls="ls --color=auto"
