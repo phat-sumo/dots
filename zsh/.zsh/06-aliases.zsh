@@ -27,6 +27,7 @@ alias ZZZ="sudo ZZZ"
 alias p="patch -p1 <"
 alias mcc="musl-gcc -static"
 alias less="less -R"
+alias v='f -e nvim'
 
 if [[ $OS =~ "Linux" ]]; then
   alias ls="ls --color=auto"
