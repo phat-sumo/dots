@@ -31,12 +31,12 @@
     history = ctrl+shift+comma
 
 [urgency_low]
-    background = "#262626"
+    background = "#303030"
     foreground = "#ffffff"
     timeout = 10
 
 [urgency_normal]
-    background = "#262626"
+    background = "#303030"
     foreground = "#ffffff"
     timeout = 20
 
