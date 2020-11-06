@@ -19,3 +19,6 @@
 [submodule "dmenu/.dmenu"]
 	path = dmenu/.dmenu
 	url = git@github.com:phat-sumo/dmenu.git
+[submodule "ag/.ag"]
+	path = ag/.ag
+	url = git@github.com:phat-sumo/the_silver_searcher.git

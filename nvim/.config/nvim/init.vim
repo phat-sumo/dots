@@ -62,14 +62,10 @@ Plugin 'xuhdev/vim-latex-live-preview'
 " redact text
 Plugin 'dbmrq/vim-redacted'
 
-" these need to be configured
-
 " fuzzyfinding
 Plugin 'junegunn/fzf.vim'
 
-" better searching with ag
-" figure out what keybind i want for ag?
-Plugin 'mileszs/ack.vim'
+" these need to be configured
 
 " view git changes in project
 " make sure colors aren't all fucked up?
@@ -86,7 +82,6 @@ Plugin 'yuttie/comfortable-motion.vim'
 " pretty lines
 " better theme / get rid of parts i don't need?
 " make sure it's not slow 
-" they removed vice! we might need to fork it
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -131,8 +126,8 @@ set linebreak
 set textwidth=82
 
 " stop automatically commenting
-autocmd filetype * set formatoptions+=tjq
-autocmd filetype * set fo-=crol
+autocmd filetype * set formatoptions+=jq
+autocmd filetype * set fo-=crolt
 
 " convert tab characters to 2-spaces when editing, then save as tabs
 set expandtab
@@ -204,6 +199,10 @@ nnoremap <Leader>! :q!<CR>
 " faster buffer mode
 nnoremap <Leader>b <C-w>
 
+nnoremap <Leader>a :Ag<CR>
+
+nnoremap <Leader>o :FZF<CR>
+
 " Toggle NERDTree
 nnoremap <Leader>f :NERDTreeToggle<CR>
 
@@ -263,6 +262,24 @@ colo vice
 
 " environment variables for plugins
 
+"let g:fzf_layout = {'down': '40%'}
+let g:fzf_layout = { 'window': {'width': 0.9, 'height': 0.4, 'yoffset': 1, 'border': 'sharp', 'highlight': 'Conditional'} }
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'PreProc'],
+  \ 'fg+':     ['fg', 'Normal'],
+  \ 'bg+':     ['bg', 'Normal'],
+  \ 'hl+':     ['fg', 'Conditional'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['bg', 'Normal'],
+  \ 'prompt':  ['fg', 'PreProc'],
+  \ 'pointer': ['fg', 'Conditional'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'PreProc'],
+  \ 'header':  ['fg', 'Comment'] }
+
 let g:airline_theme='vice'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts=0
@@ -275,8 +292,6 @@ let g:sneak#s_next = 1
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 let g:gitgutter_enabled = 0
-
-let g:ackprg = 'ag --vimgrep'
 
 let g:rust_recommended_style = 0
 

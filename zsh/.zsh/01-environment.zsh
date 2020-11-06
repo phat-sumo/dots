@@ -35,6 +35,8 @@ export GOMODPATH="/home/phat_sumo/.go/pkg/mod"
 export TERM="xterm"
 export WINEPREFIX="/home/phat_sumo/.wine"
 
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 unameOut="$(uname -s)"
 case "${unameOut}" in
     Linux*)     machine=Linux;;
@@ -43,5 +45,12 @@ case "${unameOut}" in
     MINGW*)     machine=MinGw;;
     *)          machine="UNKNOWN:${unameOut}"
 esac
+
+export FZF_DEFAULT_OPTS='
+  --color=bg:#303030,fg:#ffffff,bg+:#303030,fg+:#ffffff
+  --color=info:#87ffff,spinner:#87ffff,hl:#87ffff,hl+:#ffafd7,pointer:#ffafd7
+  --color=prompt:#87ffff,marker:#ff87d7,header:#afafd7,border:#ffafd7
+  --border=sharp
+'
 
 export OS=$machine

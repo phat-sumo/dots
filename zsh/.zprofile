@@ -1,5 +1,7 @@
 [ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)" > /dev/null
 
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 USAGE="  q quit 
   s stationed
   m mobile"
