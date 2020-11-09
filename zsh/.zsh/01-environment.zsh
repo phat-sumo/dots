@@ -43,6 +43,7 @@ case "${unameOut}" in
     Darwin*)    machine=Mac;;
     CYGWIN*)    machine=Cygwin;;
     MINGW*)     machine=MinGw;;
+    OpenBSD*)   machine=OpenBSD;;
     *)          machine="UNKNOWN:${unameOut}"
 esac
 

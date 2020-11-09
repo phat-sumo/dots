@@ -21,7 +21,7 @@ alias vi="nvim"
 alias godown="cd ~/Downloads"
 alias cleardown="rm -rf ~/Downloads/*"
 eval $(thefuck --alias)
-alias mci="sudo make clean install; mv *.diff patches/"
+alias mci="sudo make clean install"
 alias zzz="sudo zzz"
 alias ZZZ="sudo ZZZ"
 alias p="patch -p1 <"

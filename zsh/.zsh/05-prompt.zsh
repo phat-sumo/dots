@@ -128,7 +128,7 @@ PROMPT='${USER_LEVEL}[${COLOR_NORMAL}%~${USER_LEVEL}]$(GIT_PROMPT)━━ ━ %f'
 
 # phat
 *)
-PROMPT='${COLOR_HOST}$(hostname):${USER_LEVEL}[${COLOR_NORMAL}%~${USER_LEVEL}]$(GIT_PROMPT) %f'
+PROMPT='${COLOR_HOST}$(hostname -s):${USER_LEVEL}[${COLOR_NORMAL}%~${USER_LEVEL}]$(GIT_PROMPT) %f'
 ;;
 
 esac
