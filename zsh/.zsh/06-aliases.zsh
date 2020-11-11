@@ -31,7 +31,7 @@ alias v='f -e nvim'
 
 if [[ $OS =~ "Linux" ]]; then
   alias ls="ls --color=auto"
-  alias u="yay --sudoloop -Syu && clcache"
+  alias u="paru --sudoloop -Syu && clcache"
 else # mac os / satsuki
   alias python=python3
   alias u="brew update && brew upgrade"
