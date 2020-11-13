@@ -37,6 +37,10 @@ else # mac os / satsuki
   alias u="brew update && brew upgrade"
 fi
 
+if [[ $NAME =~ "void" ]]; then
+  alias u="sudo xbps-install -Su"
+fi
+
 
 # not mine
 #alias xyzzy="echo nothing happens"

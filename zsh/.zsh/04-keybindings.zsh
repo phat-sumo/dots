@@ -107,7 +107,10 @@ if [[ $OS =~ "Mac" ]]; then
   source /usr/local/Cellar/fzf/0.22.0/shell/completion.zsh 
 elif [[ $OS =~ "OpenBSD" ]]; then
   source /usr/local/share/fzf/zsh/key-bindings.zsh
-  source /usr/local/share/fzf/zsh/key-bindings.zsh
+  source /usr/local/share/fzf/zsh/completion.zsh
+elif [[ $NAME =~ "void" ]]; then
+  source /usr/share/doc/fzf/key-bindings.zsh
+  source /usr/share/doc/fzf/completion.zsh
 else
   source /usr/share/fzf/key-bindings.zsh
   source /usr/share/fzf/completion.zsh
