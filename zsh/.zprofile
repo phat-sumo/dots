@@ -2,14 +2,13 @@
 
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-USAGE="  q quit 
-  s stationed
-  m mobile"
-
 # ryuko autostart
 # keep tmux from being dumb and autostart x server if we're on tty1 
 if [[ $HOST == "ryuko" && -z "$TMUX" && $XDG_VTNR -eq 1 ]]; then
 
+USAGE="  q quit 
+  m mobile
+  s stationed"
   echo "where are you?"
 
   while read -rs -k1 key; do
@@ -21,4 +20,16 @@ if [[ $HOST == "ryuko" && -z "$TMUX" && $XDG_VTNR -eq 1 ]]; then
     esac
   done
   
-fi
+elif [[ $HOST == "gamagoori" && -z "$TMUX" ]]; then
+USAGE="  q quit 
+  press any key to continue"
+  echo "welcome back. staying long?"
+
+  while read -rs -k1 key; do
+    case $key in
+      q) break ;;
+      [h?]) echo "$USAGE";;
+      *) startx ;;
+    esac
+  done
+fi 
