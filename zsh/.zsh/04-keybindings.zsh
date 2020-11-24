@@ -97,10 +97,50 @@ function check_last_exit_code() {
   fi
 }
 
+# nnn cd on quit
+n () {
+  # Block nesting of nnn in subshells
+  if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
+    echo "nnn is already running"
+    return
+  fi
+
+  # The default behaviour is to cd on quit (nnn checks if NNN_TMPFILE is set)
+  # To cd on quit only on ^G, remove the "export" as in:
+  #     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+  # NOTE: NNN_TMPFILE is fixed, should not be modified
+  export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+  # 256 followed by 8 as fallback, separated by ';'
+  export NNN_COLORS='5268'
+
+  export NNN_PLUG='d:dragdrop'
+  # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
+  # stty start undef
+  # stty stop undef
+  # stty lwrap undef
+  # stty lnext undef
+
+  nnn -e -x "$@"
+
+  if [ -f "$NNN_TMPFILE" ]; then
+    . "$NNN_TMPFILE"
+    rm -f "$NNN_TMPFILE" > /dev/null
+  fi
+}
+
+
 # define right prompt, if it wasn't defined by a theme
 if [[ "$RPS1" == "" && "$RPROMPT" == "" ]]; then
   RPS1='$(check_last_exit_code) $(vi_mode_prompt_info)'
 fi
+
+
+
+# rewrite section below to work like this instead
+# if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
+#     source /usr/share/nnn/quitcd/quitcd.bash_zsh
+# fi
 
 if [[ $OS =~ "Mac" ]]; then
   source /usr/local/Cellar/fzf/0.22.0/shell/key-bindings.zsh 
