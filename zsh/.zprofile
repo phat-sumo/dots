@@ -20,7 +20,7 @@ USAGE="  q quit
     esac
   done
   
-elif [[ $HOST == "gamagoori" && -z "$TMUX" ]]; then
+elif [[ $HOST == "gamagoori" && -z "$TMUX" && "$(fgconsole 2> /dev/null)" -eq 1 ]]; then
 USAGE="  q quit 
   press any key to continue"
   echo "welcome back. staying long?"
