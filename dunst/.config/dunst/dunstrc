@@ -55,3 +55,9 @@
   appname = "KDE Connect"
   summary = "*Download*"
   skip_display = true
+
+[no_kdeconnect_telegram]
+  appname = "KDE Connect"
+  summary = "*Telegram*"
+  skip_display = true
+
