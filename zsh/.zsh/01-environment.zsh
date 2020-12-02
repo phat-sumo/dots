@@ -47,7 +47,9 @@ case "${unameOut}" in
     *)          machine="UNKNOWN:${unameOut}"
 esac
 
-source /etc/os-release
+if [ -f /etc/os-release ]; then
+  source /etc/os-release
+fi
 
 export FZF_DEFAULT_OPTS='
   --color=bg:#303030,fg:#ffffff,bg+:#303030,fg+:#ffffff
