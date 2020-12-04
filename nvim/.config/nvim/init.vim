@@ -123,10 +123,12 @@ set autoindent
 " wrap text with eol
 set wrap
 set linebreak
-set textwidth=82
+set textwidth=0
+"set textwidth=82
 
 " stop automatically commenting
-autocmd filetype * set formatoptions+=jq
+" this needs to be tweaked
+autocmd filetype * set fo+=jq
 autocmd filetype * set fo-=crolt
 
 " convert tab characters to 2-spaces when editing, then save as tabs
