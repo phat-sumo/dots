@@ -124,7 +124,9 @@ set autoindent
 set wrap
 set linebreak
 set textwidth=0
-"set textwidth=82
+
+autocmd bufreadpre *.txt setlocal textwidth=82
+autocmd bufreadpre *.md setlocal textwidth=82
 
 " stop automatically commenting
 " this needs to be tweaked
