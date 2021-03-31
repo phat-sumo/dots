@@ -65,6 +65,12 @@ Plugin 'dbmrq/vim-redacted'
 " fuzzyfinding
 Plugin 'junegunn/fzf.vim'
 
+" graphviz shortcuts
+Plugin 'liuchengxu/graphviz.vim'
+
+" highlight f / t search options
+Plugin 'unblevable/quick-scope'
+
 " these need to be configured
 
 " view git changes in project
@@ -301,6 +307,14 @@ let g:rust_recommended_style = 0
 
 let g:livepreview_previewer = 'zathura'
 let g:Tex_CompileRule_pdf = "pdf"
+
+let g:graphviz_output_format = 'png'
+let g:graphviz_viewer = 'sxiv'
+
+" quick-scope highlight targets
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+
 
 
 
