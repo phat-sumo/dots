@@ -58,4 +58,12 @@ export FZF_DEFAULT_OPTS='
   --border=sharp
 '
 
+# rend version
+# export FZF_DEFAULT_OPTS='
+#   --color=bg:#000300,fg:#fbf5f3,bg+:#000300,fg+:#fbf5f3
+#   --color=info:#00fbc3,spinner00fbc387ffff,hl:#00fbc3,hl+:#fe3198,pointer:#fe3198
+#   --color=prompt:#00fbc3,marker:#fe3198,header:#0fd7ff,border:#fe3198
+#   --border=sharp
+# '
+
 export OS=$machine
