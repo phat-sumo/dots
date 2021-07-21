@@ -51,12 +51,20 @@ if [ -f /etc/os-release ]; then
   source /etc/os-release
 fi
 
-export FZF_DEFAULT_OPTS='
-  --color=bg:#303030,fg:#ffffff,bg+:#303030,fg+:#ffffff
-  --color=info:#87ffff,spinner:#87ffff,hl:#87ffff,hl+:#ffafd7,pointer:#ffafd7
-  --color=prompt:#87ffff,marker:#ff87d7,header:#afafd7,border:#ffafd7
-  --border=sharp
-'
+if [[ $NAME =~ "Ubuntu" ]]; then
+  export FZF_DEFAULT_OPTS='
+    --color=bg:#303030,fg:#ffffff,bg+:#303030,fg+:#ffffff
+    --color=info:#87ffff,spinner:#87ffff,hl:#87ffff,hl+:#ffafd7,pointer:#ffafd7
+    --color=prompt:#87ffff,marker:#ff87d7,header:#afafd7,border:#ffafd7
+  '
+else
+  export FZF_DEFAULT_OPTS='
+    --color=bg:#303030,fg:#ffffff,bg+:#303030,fg+:#ffffff
+    --color=info:#87ffff,spinner:#87ffff,hl:#87ffff,hl+:#ffafd7,pointer:#ffafd7
+    --color=prompt:#87ffff,marker:#ff87d7,header:#afafd7,border:#ffafd7
+    --border=sharp
+  '
+fi
 
 # rend version
 # export FZF_DEFAULT_OPTS='

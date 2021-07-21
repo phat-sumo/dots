@@ -12,10 +12,11 @@
 #█▓▒░ aliases
 
 # man for zsh builtins
-unalias run-help
-autoload run-help
+if ! [[ $NAME =~ "Ubuntu" ]]; then
+  unalias run-help
+  autoload run-help
+fi
 alias zshman="run-help"
-
 alias vim="nvim"
 alias vi="nvim"
 alias godown="cd ~/Downloads"
@@ -41,6 +42,8 @@ fi
 
 if [[ $NAME =~ "void" ]]; then
   alias u="sudo xbps-install -Su"
+elif [[ $NAME =~ "Ubuntu" ]]; then
+  alias u="sudo apt update && sudo apt upgrade"
 fi
 
 
