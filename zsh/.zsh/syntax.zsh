@@ -44,9 +44,9 @@ if [[ $OS =~ "Mac" ]]; then
   # rend colorscheme
   export LSCOLORS=cxgxdxexbxhbhebhbccbch
 else
-  export LS_COLORS=di=36:ln=34:so=32:pi=33:ex=35:bd=34:cd=34:su=30:sg=30:tw=30:ow=30
+  # export LS_COLORS=di=36:ln=34:so=32:pi=33:ex=35:bd=34:cd=34:su=30:sg=30:tw=30:ow=30
   # rend colorscheme
-  # export LS_COLORS="di=32:ln=36:so=33:pi=34:ex=31:bd=37;41:cd=37;44:su=31;47:sg=31;42:tw=32;41:ow=32;47"
+  export LS_COLORS="di=32:ln=36:so=33:pi=34:ex=31:bd=37;41:cd=37;44:su=31;47:sg=31;42:tw=32;41:ow=32;47"
 fi 
 
 #if i get lost go here https://geoff.greer.fm/lscolors/

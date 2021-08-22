@@ -23,7 +23,7 @@
 
 [frame]
   width = 2
-  color = "#87ffff"
+  color = "#fe3198"
 
 [shortcuts]
   close = ctrl+space
@@ -32,18 +32,18 @@
   history = ctrl+shift+comma
 
 [urgency_low]
-  background = "#303030"
-  foreground = "#ffffff"
+  background = "#030303"
+  foreground = "#fbf5f3"
   timeout = 10
 
 [urgency_normal]
-  background = "#303030"
-  foreground = "#ffffff"
+  background = "#030303"
+  foreground = "#fbf5f3"
   timeout = 20
 
 [urgency_critical]
-  background = "#ff00ff"
-  foreground = "#444444"
+  background = "#030303"
+  foreground = "#fe3198"
   timeout = 100
 
 [no_kdeconnect_spotify]

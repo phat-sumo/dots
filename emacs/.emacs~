@@ -24,10 +24,8 @@
  )
 
 (setq inhibit-startup-screen t)
-
-(setq evil-default-cursor 'hbar)
-(setq-default cursor-type 'hbar)
-(setq-default cursor-in-non-selected-windows 'hollow)
+(setq w32-use-visible-system-caret nil)
+(setq-default cursor-type 'hollow)
 
 
 (defun display-startup-echo-area-message ()

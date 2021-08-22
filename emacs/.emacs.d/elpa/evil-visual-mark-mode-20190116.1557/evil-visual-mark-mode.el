@@ -6,6 +6,7 @@
 ;; Maintainer: Roman Gonzalez <romanandreg@gmail.com>
 ;; Version: 0.0.3
 ;; Package-Version: 20190116.1557
+;; Package-Commit: ac5997971972a9251f140b5542d82790ca4a43b4
 ;; Package-Requires: ((evil "1.0.9") (dash "2.10"))
 ;; Keywords: evil
 

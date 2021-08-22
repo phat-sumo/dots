@@ -89,7 +89,6 @@ Plugin 'yuttie/comfortable-motion.vim'
 " better theme / get rid of parts i don't need?
 " make sure it's not slow 
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 
 " these need to be evaluated because i don't understand them
 
@@ -256,6 +255,11 @@ vnoremap $ $h
 nnoremap ' `
 nnoremap ` '
 
+" figure out what syntax highlighting group is under cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 " pretty
 
 " fixes weird background issues.
@@ -268,14 +272,13 @@ set t_Co=256
 set termguicolors
 
 set background=dark
-colo vice
+colo rend
 
 " environment variables for plugins
 
-"let g:fzf_layout = {'down': '40%'}
 let g:fzf_layout = { 'window': {'width': 0.9, 'height': 0.4, 'yoffset': 1, 'border': 'sharp', 'highlight': 'Conditional'} }
 
-let g:fzf_colors =
+let g:fzf_colors = 
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
   \ 'hl':      ['fg', 'PreProc'],
@@ -290,7 +293,7 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'PreProc'],
   \ 'header':  ['fg', 'Comment'] }
 
-let g:airline_theme='vice'
+let g:airline_theme='rend'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts=0
 
@@ -313,8 +316,4 @@ let g:graphviz_viewer = 'sxiv'
 
 " quick-scope highlight targets
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-
-
-
 
