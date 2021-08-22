@@ -151,6 +151,9 @@ elif [[ $OS =~ "OpenBSD" ]]; then
 elif [[ $NAME =~ "void" ]]; then
   source /usr/share/doc/fzf/key-bindings.zsh
   source /usr/share/doc/fzf/completion.zsh
+elif [[ $NAME =~ "Ubuntu" ]]; then
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
+  source /usr/share/doc/fzf/examples/completion.zsh
 else
   source /usr/share/fzf/key-bindings.zsh
   source /usr/share/fzf/completion.zsh

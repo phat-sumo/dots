@@ -51,19 +51,20 @@ if [ -f /etc/os-release ]; then
   source /etc/os-release
 fi
 
-# export FZF_DEFAULT_OPTS='
-#   --color=bg:#303030,fg:#ffffff,bg+:#303030,fg+:#ffffff
-#   --color=info:#87ffff,spinner:#87ffff,hl:#87ffff,hl+:#ffafd7,pointer:#ffafd7
-#   --color=prompt:#87ffff,marker:#ff87d7,header:#afafd7,border:#ffafd7
-#   --border=sharp
-# '
-
-# rend version
-export FZF_DEFAULT_OPTS='
-  --color=bg:#000300,fg:#fbf5f3,bg+:#000300,fg+:#fbf5f3
-  --color=info:#00fbc3,spinner:#00fbc3,hl:#00fbc3,hl+:#fe3198,pointer:#fe3198
-  --color=prompt:#00fbc3,marker:#fe3198,header:#0fd7ff,border:#fe3198
-  --border=sharp
-'
+if [[ $NAME =~ "Ubuntu" ]]; then
+  # ubuntu version doesn't support --border=sharp
+  export FZF_DEFAULT_OPTS='
+    --color=bg:#000300,fg:#fbf5f3,bg+:#000300,fg+:#fbf5f3
+    --color=info:#00fbc3,spinner:#00fbc3,hl:#00fbc3,hl+:#fe3198,pointer:#fe3198
+    --color=prompt:#00fbc3,marker:#fe3198,header:#0fd7ff,border:#fe3198
+  '
+else
+  export FZF_DEFAULT_OPTS='
+    --color=bg:#000300,fg:#fbf5f3,bg+:#000300,fg+:#fbf5f3
+    --color=info:#00fbc3,spinner:#00fbc3,hl:#00fbc3,hl+:#fe3198,pointer:#fe3198
+    --color=prompt:#00fbc3,marker:#fe3198,header:#0fd7ff,border:#fe3198
+    --border=sharp
+  '
+fi
 
 export OS=$machine
