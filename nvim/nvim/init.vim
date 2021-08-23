@@ -4,6 +4,7 @@ set guicursor=
 
 " let vundle handle all vim plugins.
 set rtp+=~/.config/nvim/bundle/Vundle.vim
+call vundle#rc("~/.config/nvim/bundle")
 call vundle#begin()
 
 " plugin manager

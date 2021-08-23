@@ -22,3 +22,6 @@
 [submodule "ag/.ag"]
 	path = ag/dot-ag
 	url = git@github.com:phat-sumo/the_silver_searcher.git
+[submodule "rend"]
+	path = rend
+	url = git@github.com:phat-sumo/rend.git
