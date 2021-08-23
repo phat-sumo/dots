@@ -1,14 +1,14 @@
 [submodule "nvim/.config/nvim/bundle/Vundle.vim"]
-	path = nvim/.config/nvim/bundle/Vundle.vim
+	path = nvim/dot-config/nvim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
 [submodule "dwm/.dwm"]
-	path = dwm/.dwm
+	path = dwm/dot-dwm
 	url = git@github.com:phat-sumo/dwm.git
 [submodule "st/.st"]
-	path = st/.st
+	path = st/dot-st
 	url = git@github.com:phat-sumo/st.git
 [submodule "dwmblocks/.dwmblocks"]
-	path = dwmblocks/.dwmblocks
+	path = dwmblocks/dot-dwmblocks
 	url = git@github.com:phat-sumo/dwmblocks.git
 [submodule "hosts"]
 	path = hosts
@@ -17,8 +17,8 @@
 	path = bg
 	url = git@github.com:phat-sumo/bg.git
 [submodule "dmenu/.dmenu"]
-	path = dmenu/.dmenu
+	path = dmenu/dot-dmenu
 	url = git@github.com:phat-sumo/dmenu.git
 [submodule "ag/.ag"]
-	path = ag/.ag
+	path = ag/dot-ag
 	url = git@github.com:phat-sumo/the_silver_searcher.git
