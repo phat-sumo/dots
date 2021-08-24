@@ -1,6 +1,9 @@
-nvim/nvim/undodir
-!nvim/nvim/undodir/.gitkeep
-nvim/nvim/bundle/*
-!nvim/nvim/bundle/Vundle.vim
+nvim/.config/nvim/undodir
+!nvim/.config/nvim/undodir/.gitkeep
+nvim/.config/nvim/bundle/*
+!nvim/.config/nvim/bundle/Vundle.vim
+nvim/.config/nvim/autoload
+nvim/.config/nvim/colors
+
 
 
