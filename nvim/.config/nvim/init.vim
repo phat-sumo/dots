@@ -138,6 +138,7 @@ autocmd bufreadpre *.md setlocal textwidth=82
 " this needs to be tweaked
 autocmd filetype * set fo+=jq
 autocmd filetype * set fo-=crolt
+autocmd filetype postscr setlocal indentexpr=
 
 " convert tab characters to 2-spaces when editing, then save as tabs
 set expandtab

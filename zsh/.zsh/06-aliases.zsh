@@ -31,6 +31,7 @@ alias less="less -R"
 alias v='f -e nvim'
 alias git-adog='git log --all --decorate --oneline --graph'
 alias sl='ls'
+alias gs="gs -dNOSAFER"
 
 if [[ $OS =~ "Linux" ]]; then
   alias ls="ls --color=auto"
