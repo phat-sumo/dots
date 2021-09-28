@@ -32,7 +32,7 @@ export LESSCHARSET=utf-8
 export GOPATH="/home/phat_sumo/.go"
 export GOMODPATH="/home/phat_sumo/.go/pkg/mod"
 
-export TERM="xterm"
+export TERM="xterm-256color"
 export WINEPREFIX="/home/phat_sumo/.wine"
 
 export QT_QPA_PLATFORMTHEME=qt5ct
