@@ -140,13 +140,16 @@ autocmd filetype * set fo+=jq
 autocmd filetype * set fo-=crolt
 autocmd filetype postscr setlocal indentexpr=
 
-" convert tab characters to 2-spaces when editing, then save as tabs
-set expandtab
+" 2-space tabs
+set noexpandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-" use autocommand to set filetype-specific shiftwidths
-autocmd filetype python setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+" use autocommand to set filetype-specific 
+" shiftwidths and stop python from being dumb
+autocmd filetype python setlocal noexpandtab tabstop=2 shiftwidth=2 softtabstop=2
+" display cursor to the left of tabs
+set listchars=tab:\ \  list
 
 " round indents to nearest shiftwidth
 set shiftround

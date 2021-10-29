@@ -37,6 +37,13 @@ export WINEPREFIX="/home/phat_sumo/.wine"
 
 export QT_QPA_PLATFORMTHEME=qt5ct
 
+# ros stuff for barazo
+if [[ $(hostname) =~ "barazo" ]]; then
+	source /opt/ros/foxy/setup.zsh
+	source /usr/share/colcon_cd/function/colcon_cd.sh
+	export ROS_DOMAIN_ID=1
+fi
+
 unameOut="$(uname -s)"
 case "${unameOut}" in
     Linux*)     machine=Linux;;
