@@ -25,3 +25,6 @@
 [submodule "rend"]
 	path = rend
 	url = git@github.com:phat-sumo/rend.git
+[submodule "slock/.slock"]
+	path = slock/.slock
+	url = git@github.com:phat-sumo/slock.git
