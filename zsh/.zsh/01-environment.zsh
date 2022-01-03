@@ -35,7 +35,7 @@ export GOMODPATH="/home/phat_sumo/.go/pkg/mod"
 export TERM="xterm-256color"
 export WINEPREFIX="/home/phat_sumo/.wine"
 
-export QT_QPA_PLATFORMTHEME=qt5ct
+#export QT_QPA_PLATFORMTHEME=qt5ct
 
 # ros stuff for barazo
 if [[ $(hostname) =~ "barazo" ]]; then

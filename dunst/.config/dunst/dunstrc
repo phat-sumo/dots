@@ -1,35 +1,33 @@
 [global]
+
+  ### look and feel
+
   font = "Monoid 8"
-  allow_markup = yes
-  #format = "<b>%a</b>\n<b>%s %p</b>\n%b"
-  format = "<b>%s %p</b>\n%b"
-  sort = yes
-  indicate_hidden = true
-  # geometry = "x5"
-  idle_threshold = 0
-  geometry = "300x5-20+20"
   alignment = center
-  show_age_threshold = 60
-  sticky_history = yes
-  follow = none
-  word_wrap = yes
+  word_wrap = true
   separator_height = 0
   padding = 5
   horizontal_padding = 5
-  separator_color = auto
-  startup_notification = false
-  transparency = 0
+  frame_color = "#fe3198"
+  frame_width = 2
+
+  ### functionality 
+
+  # how to open dmenu for context
   dmenu = /usr/local/bin/dmenu -p dunst:
+  # do not clear notifications if idle for this amount of time
+  idle_threshold = 5m
+  show_age_threshold = 60s
+  sticky_history = true
+  # do not follow focus, go to specific monitor
+  follow = none
 
-[frame]
-  width = 2
-  color = "#fe3198"
-
-[shortcuts]
-  close = ctrl+space
-  close_all = ctrl+shift+space
-  context = ctrl+shift+period
-  history = ctrl+shift+comma
+# deprecated
+#[shortcuts]
+#  close = ctrl+space
+#  close_all = ctrl+shift+space
+#  context = ctrl+shift+period
+#  history = ctrl+shift+comma
 
 [urgency_low]
   background = "#030303"

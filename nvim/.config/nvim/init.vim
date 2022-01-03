@@ -10,6 +10,10 @@ call vundle#begin()
 " plugin manager
 Plugin 'vundlevim/vundle.vim'
 
+" firefox stuff
+
+Plugin 'glacambre/firenvim'
+
 " syntax stuff
 
 " javascript syntax support
@@ -17,6 +21,9 @@ Plugin 'pangloss/vim-javascript'
 
 " latex syntax support
 Plugin 'vim-latex/vim-latex'
+
+" kotlin syntax support
+Plugin 'udalov/kotlin-vim'
 
 " pretty
 
@@ -141,6 +148,7 @@ autocmd filetype * set fo-=crolt
 autocmd filetype postscr setlocal indentexpr=
 
 " 2-space tabs
+" FIX THIS
 set noexpandtab
 set tabstop=2
 set shiftwidth=2
@@ -322,3 +330,27 @@ let g:graphviz_viewer = 'sxiv'
 " quick-scope highlight targets
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
+" firenvim config object
+let g:firenvim_config = { 
+	\ 'globalSettings': {
+		\ 'alt': 'all',
+	\  },
+	\ 'localSettings': {
+		\ '.*': {
+			\ 'cmdline': 'neovim',
+			\ 'content': 'text',
+			\ 'priority': 0,
+			\ 'selector': 'textarea',
+			\ 'takeover': 'always',
+		\ },
+	\ }
+\ }
+
+" define easier way to ignore domains
+let fc = g:firenvim_config['localSettings']
+let fc['https?://messages\.google\.com'] = { 'takeover': 'never', 'priority': 1 }
+let fc['https?://mail\.google\.com'] = { 'takeover': 'always', 'priority': 1 }
+let fc['localhost:8888'] = { 'takeover': 'never', 'priority': 1 }
+
+" make firenvim fonts not unthinkably massive
+set guifont=Monoid:h8
