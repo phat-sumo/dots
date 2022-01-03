@@ -148,9 +148,6 @@ if [[ $OS =~ "Mac" ]]; then
 elif [[ $OS =~ "OpenBSD" ]]; then
   source /usr/local/share/fzf/zsh/key-bindings.zsh
   source /usr/local/share/fzf/zsh/completion.zsh
-elif [[ $NAME =~ "void" ]]; then
-  source /usr/share/doc/fzf/key-bindings.zsh
-  source /usr/share/doc/fzf/completion.zsh
 elif [[ $NAME =~ "Ubuntu" ]]; then
   source /usr/share/doc/fzf/examples/key-bindings.zsh
   source /usr/share/doc/fzf/examples/completion.zsh
