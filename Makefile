@@ -6,6 +6,7 @@ help:
 	| awk 'BEGIN {FS = ":.*?# "}; {printf "\033[32m%-10s\033[0m %s\n", $$1, $$2}'
 
 ryuko: ag dmenu dunst dwm dwmblocks emacs hosts htop nvim picom st zsh # ag dmenu dunst dwm dwmblocks emacs hosts htop nvim picom st zsh 
+lite: vim zsh-lite  
 
 ag: 
 	@echo "configuring ag..."
@@ -76,6 +77,10 @@ yabai:
 zsh:
 	@echo "configuring zsh..."
 	@stow -R zsh 2>&1 | grep -v $(STOW_BUG) || : 
+
+zsh-lite:
+	@echo "configuring zsh-lite..."
+	@stow -R zsh-lite 2>&1 | grep -v $(STOW_BUG) || : 
 
 .PHONY: ag chunkwm dmenu dunst dwm dwmblocks emacs firefox hosts htop nvim picom st vim yabai zsh
 
