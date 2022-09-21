@@ -1,0 +1,217 @@
+set nocompatible
+filetype off
+set guicursor=
+
+" pretty
+
+" fixes weird background issues.
+if &term =~ '256color'
+    set t_ut=
+endif
+
+set t_Co=256
+
+set termguicolors
+
+set background=dark
+
+colo rend
+
+" look & feel
+
+filetype plugin indent on
+
+syntax on
+
+set mouse=a
+
+set number
+set relativenumber
+
+set visualbell
+
+set encoding=utf-8
+
+" persistent undo
+set undofile
+set undodir=~/.config/nvim/undodir
+
+" unnamed buffer is clipboard
+set clipboard=unnamedplus
+
+" make statusbar not freak out
+set laststatus=2
+set ruler
+
+set autoindent
+
+" wrap text with eol
+set wrap
+set linebreak
+set textwidth=0
+
+autocmd bufreadpre *.txt setlocal textwidth=82
+autocmd bufreadpre *.md setlocal textwidth=82
+
+" stop automatically commenting
+" this needs to be tweaked
+autocmd filetype * set fo+=jq
+autocmd filetype * set fo-=crolt
+autocmd filetype postscr setlocal indentexpr=
+
+" 2-space tabs
+" FIX THIS
+set noexpandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+" use autocommand to set filetype-specific 
+" shiftwidths and stop python from being dumb
+autocmd filetype python setlocal noexpandtab tabstop=2 shiftwidth=2 softtabstop=2
+" display cursor to the left of tabs
+set listchars=tab:\ \  list
+
+" round indents to nearest shiftwidth
+set shiftround
+
+" lines from cursor when scrolling
+set scrolloff=3
+
+" hides buffers without closing them, even when shifting focus to another file.
+set hidden
+
+" small performance boosts
+set ttyfast
+set lazyredraw
+
+set showmode
+set showcmd
+
+" case insensitive searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+
+set cmdheight=1
+
+set updatetime=300
+
+set shortmess+=c
+
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+	set signcolumn=number
+else
+	set signcolumn=yes
+endif
+
+" keybinds
+
+" spaceleader
+let mapleader = ' '
+
+" unmap f1 as help
+nmap <F1> <nop>
+imap <F1> <nop>
+
+" sets paste on f2.
+set pastetoggle=<F2>
+
+" allow backspacing over autoindents, end of lines, and the beginning of lines
+set backspace=indent,eol,start
+
+" allow j and k to always move the cursor one line up or down, 
+" even in wrapped paragraphs
+nnoremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+nnoremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
+" center on search
+nnoremap n nzz
+nnoremap N Nzz
+
+" ctrl+l redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<cr><C-l>
+
+" enter inserts new line
+noremap <cr> o<Esc>
+
+" quick saving / exiting
+nnoremap <leader>w :w<cr>
+nnoremap <leader>x :x<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>! :q!<cr>
+
+" faster buffer mode
+nnoremap <leader>b <c-w>
+
+" remap w!! to sudo-edit the file
+cmap w!! w suda://%
+
+" dont grab end of line in visual
+vnoremap $ $h
+
+" swap ' and ` to prefer accuracy with marks
+nnoremap ' `
+nnoremap ` '
+
+" figure out what syntax highlighting group is under cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
+
+" keybinds for plugins
+
+" remap w!! to sudo-edit the file
+cmap w!! w suda://%
+
+nnoremap <leader>gg :GitGutterToggle<cr>
+
+nnoremap <leader>l :LLPStartPreview<cr>
+
+nnoremap <leader>a :Ag<cr>
+
+nnoremap <leader>o :FZF<cr>
+
+" environment variables for plugins
+
+let g:fzf_layout = { 'window': {'width': 0.9, 'height': 0.4, 'yoffset': 1, 'border': 'sharp', 'highlight': 'Conditional'} }
+
+let g:fzf_colors = 
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'PreProc'],
+  \ 'fg+':     ['fg', 'Normal'],
+  \ 'bg+':     ['bg', 'Normal'],
+  \ 'hl+':     ['fg', 'Conditional'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['bg', 'Normal'],
+  \ 'prompt':  ['fg', 'PreProc'],
+  \ 'pointer': ['fg', 'Conditional'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'PreProc'],
+  \ 'header':  ['fg', 'Comment'] }
+
+let g:airline_theme='rend'
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_powerline_fonts=0
+
+let g:Hexokinase_highlighters = ['backgroundfull']
+let g:Hexokinase_optInPatterns = 'full_hex,triple_hex,rgb,rgba,hsl,hsla'
+
+let g:sneak#s_next = 1
+
+" let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:gitgutter_enabled = 0
+
+let g:rust_recommended_style = 0
+
+let g:livepreview_previewer = 'zathura'
+let g:Tex_CompileRule_pdf = "pdf"
+
+let g:graphviz_output_format = 'png'
+let g:graphviz_viewer = 'sxiv'
+
+" quick-scope highlight targets
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
