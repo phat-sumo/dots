@@ -41,7 +41,7 @@ else # mac os / satsuki
   alias u="brew update && brew upgrade"
 fi
 
-if [[ $NAME =~ "void" ]]; then
+if [[ $NAME =~ "Void" ]]; then
   alias u="sudo xbps-install -Su"
 elif [[ $NAME =~ "Ubuntu" ]]; then
   alias u="sudo apt update && sudo apt upgrade"
