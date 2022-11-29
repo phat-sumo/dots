@@ -11,7 +11,7 @@
 
 
 # paths
-export PATH=/usr/local/bin:$HOME/bin:$HOME/.gem/ruby/2.5.0/bin:$HOME/src/go/bin/:$HOME/.local/bin:$HOME/.cargo/bin:$PATH
+export PATH=/usr/local/bin:/usr/games:$HOME/bin:$HOME/.gem/ruby/2.5.0/bin:$HOME/src/go/bin/:$HOME/.local/bin:$HOME/.cargo/bin:$PATH
 
 # preferred text editor
 export EDITOR=nvim
@@ -77,3 +77,5 @@ fi
 export FZF_CTRL_R_OPTS=+s
 
 export OS=$machine
+
+autoload -Uz zmv

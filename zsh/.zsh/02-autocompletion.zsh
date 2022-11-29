@@ -43,7 +43,7 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' \
   '+l:|?=** r:|?=**'
 
+source ~/.dots/zsh-z/zsh-z.plugin.zsh
+
 # initialize the autocompletion
 autoload -Uz compinit && compinit -i
-
-. ~/.dots/z/z.sh

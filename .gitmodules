@@ -28,6 +28,6 @@
 [submodule "slock/.slock"]
 	path = slock/.slock
 	url = git@github.com:phat-sumo/slock.git
-[submodule "z"]
-	path = z
-	url = https://github.com/rupa/z
+[submodule "zsh-z"]
+	path = zsh-z
+	url = https://github.com/agkozak/zsh-z.git
