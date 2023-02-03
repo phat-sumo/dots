@@ -1,0 +1,112 @@
+# sxhkd config 
+#
+super + Escape
+	msv restart sxhkd; \
+	notify-send -t 1000 "sxhkd restarted"
+
+### program launching ###
+
+super Return
+	st
+
+super c
+	firefox --new-window
+
+super d
+	dmenu_run -i -hp discord
+
+super s
+	screenshot
+
+super y
+	dwmc togglescratch
+
+super u {_,ctrl}
+	dunstctl {close, set-paused toggle}
+
+### sleep & hibernate ###
+
+super ctrl z {_,shift}
+	sudo {zzz, ZZZ}
+
+super x {_, ctrl, ctrl shift}
+	{slock, slock &; sudo zzz, slock &; sudo ZZZ}
+
+### brightness ###
+
+XF86MonBrightnessUp {_, super, ctrl, ctrl shift}
+	{xbacklight -inc 5, xbacklight -set 30, derp i, aderp i} 
+
+XF86MonBrightnessDown {_, super, ctrl, ctrl shift}
+	{xbacklight -dec 5, xbacklight -set 0, derp d, aderp d} 
+
+### media keys ### 
+
+XF86AudioLowerVolume
+	vold
+
+XF86AudioRaiseVolume
+	volu
+
+XF86AudioMicMute
+	volm
+
+XF86Tools
+	volg
+
+super m  {_, shift}
+	playerctl -p {spotify,vlc} play-pause
+
+### dwm ###
+
+super {k,j}
+	dwmc focusstack {-,+}1
+
+super shift {k,j}
+	dwmc movestack {-,+}1
+
+super {h,l}
+	dwmc setmfact {-,+}0.05
+
+super shift space
+	dwmc togglefloating
+
+super shift q
+	dwmc killclient
+
+super ctrl shift {q,r}
+	dwmc quit {0,1}
+
+super Tab
+	dwmc viewprev 
+
+super space
+	dwmc zoom
+
+super {t,f,m}
+	dwmc setlayoutex {0,1,2}
+
+super {_,ctrl}{_,shift} {1-9}
+  dwmc {_,toggle}{viewex,tagex} {0-8}
+
+super {_,ctrl}{_,shift} {0}
+  dwmc {_,toggle}{viewex,tagex} {9}
+
+super {_,shift} {period,comma}
+	dwmc {focusmon, tagmon} {-,+}1
+
+super minus
+	dwmc viewall
+
+super shift {a,s}
+	dwmc setgaps {-,+}1
+
+super shift ctrl s
+	dwmc setgaps 0
+
+# manage bar turning on or off via super, with any modifier combination
+Super_L {_, ctrl} {_, alt} {_, shift}
+	dwmc holdbar 1
+
+@Super_L {_, ctrl} {_, alt} {_, shift}
+	dwmc holdbar 0
