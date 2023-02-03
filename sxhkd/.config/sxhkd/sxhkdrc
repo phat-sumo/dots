@@ -15,8 +15,9 @@ super c
 super d
 	dmenu_run -i -hp discord
 
+# for some reason this sleep is required to get the keyboard back from sxhkd
 super s
-	screenshot
+	sleep 0.1 && screenshot
 
 super y
 	dwmc togglescratch
@@ -26,7 +27,7 @@ super u {_,ctrl}
 
 ### sleep & hibernate ###
 
-super ctrl z {_,shift}
+super ctrl z {_, shift}
 	sudo {zzz, ZZZ}
 
 super x {_, ctrl, ctrl shift}
