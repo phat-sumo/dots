@@ -44,6 +44,7 @@ fi
 
 if [[ $NAME =~ "Void" ]]; then
   alias u="sudo xbps-install -Su"
+  alias gu="sudo xbps-install -Su -R https://mirrors.servercentral.com/voidlinux/current -R https://mirrors.servercentral.com/voidlinux/current/nonfree" 
 elif [[ $NAME =~ "Ubuntu" ]]; then
   alias u="sudo apt update && sudo apt upgrade"
 fi

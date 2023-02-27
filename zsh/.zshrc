@@ -10,3 +10,5 @@
 
 # load configs
 for config (~/.zsh/*.zsh) source $config
+
+export PATH=$PATH:/home/phat_sumo/.spicetify
