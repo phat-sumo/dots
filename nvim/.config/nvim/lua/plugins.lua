@@ -1,22 +1,43 @@
 local PKGS = {
 
-	-- packages 
+	-- packages --
 
-	{ 'savq/paq-nvim', pin=true, opt=true},
+	{ 'savq/paq-nvim', pin = true, opt = true },
 
-	-- pretty
+	-- pretty --
 
 	-- { 'rrethy/vim-hexokinase', run='make hexokinase' },
 	{ 'norcalli/nvim-colorizer.lua' },
 
-	-- lsp setup 
-	
-	-- TODO: needs configuring
-	-- lsp config 
+	-- treesitter handles advanced syntax highlighting
+	{ 'nvim-treesitter/nvim-treesitter', run = function() vim.cmd 'TSUpdate' end },
+
+	'nvim-treesitter/playground',
+
+	-- automatically close tags with treesitter
+	'windwp/nvim-ts-autotag',
+
+	-- lsp setup --
+
+	-- lsp config
 	'neovim/nvim-lspconfig',
 
-	-- new verbs
-	
+	-- autocompletion
+	'hrsh7th/cmp-nvim-lsp',
+	'hrsh7th/cmp-buffer',
+	'hrsh7th/cmp-path',
+	'hrsh7th/cmp-cmdline',
+	'hrsh7th/nvim-cmp',
+
+	-- snippets -- 
+	'L3MON4D3/LuaSnip',
+	-- nvim-cmp integration
+	'saadparwaiz1/cmp_luasnip',
+	-- snippet library
+	'rafamadriz/friendly-snippets',
+
+	-- new verbs --
+
 	-- change surrounding characters
 	'tpope/vim-surround',
 
@@ -26,7 +47,7 @@ local PKGS = {
 	-- add gr verb to replace with register
 	'vim-scripts/replacewithregister',
 
-	-- new functions
+	-- new functions --
 
 	-- adjust dates & times with c-a and c-x
 	'tpope/vim-speeddating',
@@ -61,11 +82,11 @@ local PKGS = {
 	-- highlight f / t search options
 	'unblevable/quick-scope',
 
-	-- these need to be configured
+	-- these need to be configured --
 
 	-- view git changes in project
 	-- make sure colors aren't all fucked up?
-	'airblade/vim-gitgutter' ,
+	'airblade/vim-gitgutter',
 
 	-- align stuff easily
 	-- make an easier keybind?
@@ -77,7 +98,7 @@ local PKGS = {
 
 	-- pretty lines
 	-- better theme / get rid of parts i don't need?
-	-- make sure it's not slow 
+	-- make sure it's not slow
 	'vim-airline/vim-airline',
 
 	-- these need to be evaluated because i don't understand them

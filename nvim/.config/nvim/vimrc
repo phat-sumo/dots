@@ -156,9 +156,11 @@ nnoremap ' `
 nnoremap ` '
 
 " figure out what syntax highlighting group is under cursor
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+map <F11> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
+
+map <F10> :TSHighlightCapturesUnderCursor <cr>
 
 " keybinds for plugins
 
@@ -195,6 +197,16 @@ let g:fzf_colors =
 let g:airline_theme='rend'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts=0
+let g:airline#extensions#nvimlsp#error_symbol = 'E '
+let g:airline#extensions#nvimlsp#warning_symbol = 'W '
+let g:airline#extensions#nvimlsp#open_lnum_symbol = ' '
+let g:airline#extensions#nvimlsp#close_lnum_symbol = ' '
+
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+
+let g:airline_symbols_ascii = 1
 
 let g:Hexokinase_highlighters = ['backgroundfull']
 let g:Hexokinase_optInPatterns = 'full_hex,triple_hex,rgb,rgba,hsl,hsla'

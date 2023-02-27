@@ -21,6 +21,9 @@ do -- bootstrap paq
 	end)
 
 end
-
 require 'colorizer'.setup()
+
+require 'lsp'
+
+require 'treesitter'
 

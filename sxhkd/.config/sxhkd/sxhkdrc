@@ -1,5 +1,5 @@
 # sxhkd config 
-#
+
 super + Escape
 	msv restart sxhkd; \
 	notify-send -t 1000 "sxhkd restarted"
@@ -35,11 +35,11 @@ super x {_, ctrl, ctrl shift}
 
 ### brightness ###
 
-XF86MonBrightnessUp {_, super, ctrl, ctrl shift}
-	{xbacklight -inc 5, xbacklight -set 30, derp i, aderp i} 
+XF86MonBrightnessUp {_, super, ctrl, ctrl shift, shift}
+	{xbacklight -inc 5, xbacklight -set 30, derp i, aderp i, notify-send -t 500 brightness: $(xbacklight -get)} 
 
-XF86MonBrightnessDown {_, super, ctrl, ctrl shift}
-	{xbacklight -dec 5, xbacklight -set 0, derp d, aderp d} 
+XF86MonBrightnessDown {_, super, ctrl, ctrl shift, shift}
+	{xbacklight -dec 5, xbacklight -set 0, derp d, aderp d, notify-send -t 500 brightness: $(xbacklight -get)} 
 
 ### media keys ### 
 
@@ -63,6 +63,9 @@ super m  {_, shift}
 super {k,j}
 	dwmc focusstack {-,+}1
 
+super {o,i}
+	dwmc incnmaster {-,+}1
+
 super shift {k,j}
 	dwmc movestack {-,+}1
 
@@ -84,8 +87,8 @@ super Tab
 super space
 	dwmc zoom
 
-super {t,f,m}
-	dwmc setlayoutex {0,1,2}
+super {t,f}
+	dwmc setlayoutex {0,2}
 
 super {_,ctrl}{_,shift} {1-9}
   dwmc {_,toggle}{viewex,tagex} {0-8}
