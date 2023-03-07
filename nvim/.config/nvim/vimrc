@@ -145,9 +145,6 @@ nnoremap <leader>! :q!<cr>
 " faster buffer mode
 nnoremap <leader>b <c-w>
 
-" remap w!! to sudo-edit the file
-cmap w!! w suda://%
-
 " dont grab end of line in visual
 vnoremap $ $h
 
@@ -165,7 +162,7 @@ map <F10> :TSHighlightCapturesUnderCursor <cr>
 " keybinds for plugins
 
 " remap w!! to sudo-edit the file
-cmap w!! w suda://%
+cmap w!! SudaWrite
 
 nnoremap <leader>gg :GitGutterToggle<cr>
 
