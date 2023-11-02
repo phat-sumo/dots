@@ -36,6 +36,9 @@ local PKGS = {
 	-- snippet library
 	'rafamadriz/friendly-snippets',
 
+	-- conversational development
+	'Olical/conjure',
+
 	-- new verbs --
 
 	-- change surrounding characters
@@ -61,6 +64,9 @@ local PKGS = {
 	-- file browser
 	'preservim/nerdtree',
 
+	-- git decorations 
+	'lewis6991/gitsigns.nvim',
+
 	-- comment faster
 	'tomtom/tcomment_vim',
 
@@ -83,10 +89,6 @@ local PKGS = {
 	'unblevable/quick-scope',
 
 	-- these need to be configured --
-
-	-- view git changes in project
-	-- make sure colors aren't all fucked up?
-	'airblade/vim-gitgutter',
 
 	-- align stuff easily
 	-- make an easier keybind?

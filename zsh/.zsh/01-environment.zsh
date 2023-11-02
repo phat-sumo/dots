@@ -81,4 +81,4 @@ autoload -Uz zmv
 export N_PREFIX=$HOME/.n
 
 # paths
-export PATH=/usr/local/bin:/usr/games:$HOME/bin:$HOME/.gem/ruby/2.5.0/bin:$HOME/src/go/bin/:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.npm/bin:$N_PREFIX/bin:$PATH
+export PATH=/usr/local/bin:/usr/games:$HOME/bin:$HOME/.gem/ruby/2.5.0/bin:$HOME/src/go/bin/:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.npm/bin:$N_PREFIX/bin:$HOME/.ghcup/bin:$PATH

@@ -49,9 +49,10 @@ vim.keymap.set('n', '<space>d', vim.diagnostic.setloclist, opts)
 
 -- use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
 	-- enable completion triggered by <c-x><c-o>
 	-- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+	client.server_capabilities.semanticTokensProvider = nil
 
 	-- mappings.
 	-- see `:help vim.lsp.*` for documentation on any of the below functions
@@ -129,6 +130,12 @@ lsp['ccls'].setup {
 	},
 }
 
+-- fennel
+lsp['fennel_ls'].setup {
+	capabilities = capabilities,
+	on_attach = on_attach,
+	flags = lsp_flags,
+}
 
 -- lua
 lsp['lua_ls'].setup {

@@ -1,0 +1,82 @@
+(undo-tree-save-format-version . 1)
+"328a4a88ada93b123abbebc0da55d0d393fd650f"
+[nil nil nil nil (25872 22034 631368 23000) 0 nil]
+([nil nil ((2934 . 2935) (t 25871 45559 164858 861000) 2903) nil (25872 22034 631365 90000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 2847 . 2848) (#("
+" 0 1 (fontified nil)) . -2880) (2847 . 2881) 2815) nil (25872 22034 631361 807000) 0 nil])
+([nil nil ((2862 . 2871) (#("l" 0 1 (fontified t)) . -2862) (undo-tree-id66 . -1) 2863 (2859 . 2863) (#("default" 0 7 (fontified t)) . 2859) (undo-tree-id67 . -3) (undo-tree-id68 . -6) 2862) nil (25872 22034 631358 36000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 2885 . 2886) (#("
+" 0 1 (fontified nil)) . -2923) (2885 . 2924) 2870) nil (25872 22034 631352 448000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 2923 . 2924) (#("
+" 0 1 (fontified nil)) . -2961) (2923 . 2962) 2886) nil (25872 22034 631349 585000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 2961 . 2962) (#("
+" 0 1 (fontified nil)) . -2999) (2961 . 3000) 2924) nil (25872 22034 631346 721000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 2999 . 3000) (#("
+" 0 1 (fontified nil)) . -3037) (2999 . 3038) 2962) nil (25872 22034 631343 369000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 3037 . 3038) (#("
+" 0 1 (fontified nil)) . -3075) (3037 . 3076) 3000) nil (25872 22034 631340 436000) 0 nil])
+([nil nil ((2899 . 2903) (#("e" 0 1 (fontified t)) . -2899) (undo-tree-id63 . -1) 2900 (2897 . 2900) (#("normal" 0 6 (fontified t)) . 2897) (undo-tree-id64 . -2) (undo-tree-id65 . -5) 2899) nil (25872 22034 631337 83000) 0 nil])
+([nil nil ((2935 . 2941) (#("normal" 0 6 (fontified t)) . 2935) (undo-tree-id61 . -4) (undo-tree-id62 . -5) 2939) nil (25872 22034 631328 423000) 0 nil])
+([nil nil ((2977 . 2979) (2973 . 2977) (#("normal" 0 6 (fontified t)) . 2973) (undo-tree-id59 . -4) (undo-tree-id60 . -5) 2977) nil (25872 22034 631323 744000) 0 nil])
+([nil nil ((3011 . 3018) (#("normal" 0 6 (fontified t)) . 3011) (undo-tree-id57 . -4) (undo-tree-id58 . -5) 3015) nil (25872 22034 631319 64000) 0 nil])
+([nil nil ((3050 . 3058) (#("normal" 0 6 (fontified t)) . 3050) (undo-tree-id55 . -4) (undo-tree-id56 . -5) 3054) nil (25872 22034 631314 734000) 0 nil])
+([nil nil ((#("l" 0 1 (fontified t)) . -2922) (undo-tree-id52 . -1) (#(";" 0 1 (face font-lock-comment-delimiter-face fontified t)) . -2923) (undo-tree-id53 . -1) (#("k" 0 1 (face font-lock-comment-face fontified t)) . -2924) (undo-tree-id54 . -1) 2925 (2922 . 2925) (t 25872 18195 888461 93000)) nil (25872 22034 631309 915000) 0 nil])
+([nil nil ((3325 . 3328) (3323 . 3325) (3302 . 3323) (#("h" 0 1 (fontified t)) . -3302) (undo-tree-id47 . -1) (#("e" 0 1 (fontified t)) . -3303) (undo-tree-id48 . -1) (#("l" 0 1 (fontified t)) . -3304) (undo-tree-id49 . -1) (#("p" 0 1 (fontified t)) . -3305) (undo-tree-id50 . -1) (#("-" 0 1 (fontified t)) . -3306) (undo-tree-id51 . -1) 3307 (3301 . 3307) (3300 . 3301) 3299) nil (25872 22034 631303 210000) 0 nil])
+([nil nil ((3522 . 3523) 3522) nil (25872 22034 631294 131000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 3522) (undo-tree-id46 . -1)) nil (25872 22034 631291 756000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 3300) (#("(help-" 0 1 (fontified nil) 1 2 (fontified nil) 2 3 (fontified nil) 3 4 (fontified nil) 4 5 (fontified nil) 5 6 (fontified nil)) . 3301) (3302 . 3307) (#("setq help-window-sele" 0 4 (face font-lock-keyword-face fontified nil) 4 21 (fontified nil)) . 3302) (#("ct" 0 2 (fontified nil)) . 3323) (#(" t)" 0 3 (fontified t)) . 3325)) nil (25872 22034 631288 55000) 0 nil])
+([nil nil ((3444 . 3445) (3433 . 3444) (3412 . 3433) (3411 . 3412) 3382) nil (25872 22034 631284 702000) 0 nil])
+([nil nil ((3435 . 3436)) nil (25872 22034 631281 839000) 0 nil])
+([nil nil ((#("'" 0 1 (fontified t)) . 3435)) nil (25872 22034 631279 394000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 3411) (undo-tree-id42 . -1) (#("(setq evil-undo-syste" 0 1 (fontified nil) 1 5 (face font-lock-keyword-face fontified nil) 5 21 (fontified nil)) . 3412) (undo-tree-id43 . -21) (#("m undo-tree" 0 11 (fontified nil)) . 3433) (undo-tree-id44 . 9) (undo-tree-id45 . -2) (#(")" 0 1 (fontified t)) . 3444)) nil (25872 22034 631276 461000) 0 nil])
+([nil nil ((3302 . 3328) (#("help-" 0 1 (fontified nil) 1 2 (fontified nil) 2 3 (fontified nil) 3 4 (fontified nil) 4 5 (fontified nil)) . 3302) (3300 . 3307)) nil (25872 22034 631270 734000) 0 nil])
+([nil nil ((3457 . 3474) (3455 . 3457) (3451 . 3455) (3440 . 3451) (3439 . 3440) 3434) nil (25872 22034 631266 963000) 0 nil])
+([nil nil ((3481 . 3493) (3475 . 3481) (3474 . 3475) (t 25872 19200 492948 380000) 3470) nil (25872 22034 631263 680000) 0 nil])
+([nil nil ((3492 . 3497)) nil (25872 22034 631261 236000) 0 nil])
+([nil nil ((3477 . 3483) (#("l" 0 1 (fontified t)) . -3477) (undo-tree-id39 . -1) 3478 (3476 . 3478) (#("i" 0 1 (fontified t)) . -3476) (undo-tree-id40 . -1) (#("n" 0 1 (fontified t)) . -3477) (undo-tree-id41 . -1) 3478 (3475 . 3478) (3474 . 3475) 3440) nil (25872 22034 631257 953000) 0 nil])
+([nil nil ((3484 . 3494) (#("g" 0 1 (fontified t)) . -3484) (undo-tree-id32 . -1) (#("l" 0 1 (fontified t)) . -3485) (undo-tree-id33 . -1) (#("o" 0 1 (fontified t)) . -3486) (undo-tree-id34 . -1) (#("b" 0 1 (fontified t)) . -3487) (undo-tree-id35 . -1) (#("a" 0 1 (fontified t)) . -3488) (undo-tree-id36 . -1) (#("l" 0 1 (fontified t)) . -3489) (undo-tree-id37 . -1) (#("-" 0 1 (fontified t)) . -3490) (undo-tree-id38 . -1) 3491 (3483 . 3491)) nil (25872 22034 631251 318000) 0 nil])
+([nil nil ((3494 . 3495)) nil (25872 22034 631242 588000) 0 nil])
+([nil nil ((#("'" 0 1 (fontified t)) . 3493)) nil (25872 22034 631240 213000) 0 nil])
+([nil nil ((#("'" 0 1 (fontified t)) . 3483)) nil (25872 22034 631238 328000) 0 nil])
+([nil nil ((3483 . 3484)) nil (25872 22034 631235 953000) 0 nil])
+([nil nil ((#("'" 0 1 (fontified t)) . 3483) (undo-tree-id30 . -1) (undo-tree-id31 . -1)) nil (25872 22034 631233 159000) 0 nil])
+([nil nil ((3517 . 3518) 3502) nil (25872 22034 631229 318000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 3517) (undo-tree-id29 . -1)) nil (25872 22034 631226 944000) 0 nil])
+([nil nil ((#("(elpaca undo-tree)
+(global-undo-tree-mode)
+" 0 1 (fontified t) 1 7 (face font-lock-keyword-face fontified t) 7 8 (fontified t) 8 17 (fontified t) 17 18 (fontified t) 18 19 (fontified t) 19 42 (fontified t) 42 43 (fontified t)) . 3475) (undo-tree-id16 . -37) (undo-tree-id17 . 1) (undo-tree-id18 . -42) (undo-tree-id19 . -37) (undo-tree-id20 . -18) (undo-tree-id21 . -17) (undo-tree-id22 . -18) (undo-tree-id23 . -27) (undo-tree-id24 . -27) (undo-tree-id25 . -37) (undo-tree-id26 . -37) (undo-tree-id27 . -18) (undo-tree-id28 . -43) 3493) nil (25872 22034 631223 172000) 0 nil])
+([nil nil ((3469 . 3473) (#("tree" 0 4 (fontified t)) . 3469) (undo-tree-id9 . -3) (undo-tree-id10 . -2) (undo-tree-id11 . -2) (undo-tree-id12 . -2) (undo-tree-id13 . -2) (undo-tree-id14 . -4) (undo-tree-id15 . -4) 3471) nil (25872 22034 631209 204000) 0 nil])
+([nil nil ((3476 . 3482) (3475 . 3476) (3474 . 3475) 3473) nil (25872 22034 631199 775000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 3474) (undo-tree-id0 . -1) (undo-tree-id1 . -1) (undo-tree-id2 . -1) (undo-tree-id3 . -1) (#("
+" 0 1 (fontified t)) . 3475) (undo-tree-id4 . 1) (undo-tree-id5 . -1) (undo-tree-id6 . -1) (#("change" 0 6 (fontified t)) . 3476) (undo-tree-id7 . -5) (undo-tree-id8 . -5)) nil (25872 22034 631194 48000) 0 nil])
+([nil nil ((3473 . 3474)) nil (25872 22034 631147 953000) 0 nil])
+([nil nil ((#("'" 0 1 (fontified t)) . 3473) (undo-tree-id69 . -1) (undo-tree-id70 . -1) (undo-tree-id71 . -1) (undo-tree-id72 . -1) (undo-tree-id73 . -1) (undo-tree-id74 . -1) (t 25872 22034 638706 945000)) nil (25872 22042 883065 222000) 0 nil])
+([nil nil ((3476 . 3480) (3475 . 3476) (3474 . 3475) (t 25872 22042 891994 989000) 3473) nil (25872 24071 348390 642000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 3474) (undo-tree-id99 . -1) (#("
+" 0 1 (fontified t)) . 3475) (undo-tree-id100 . -1) (#("undo" 0 4 (fontified t)) . 3476) (undo-tree-id101 . -3)) nil (25872 24071 348384 7000) 0 nil])
+([nil nil ((3474 . 3480) (t 25872 22042 891994 989000)) nil (25872 24071 348376 743000) 0 nil])
+([nil nil ((#("(setq evil-undo-system 'undo-redo)
+" 0 1 (fontified t) 1 5 (face font-lock-keyword-face fontified t) 5 24 (fontified t) 24 33 (fontified t) 33 34 (fontified t) 34 35 (fontified t)) . 3440) (undo-tree-id96 . -34) (undo-tree-id97 . -33) (undo-tree-id98 . -2) 3442) nil (25872 24071 348371 994000) 0 nil])
+([nil nil ((3461 . 3473) (3440 . 3461) (3439 . 3440) 3410) nil (25872 24071 348202 629000) 0 nil])
+([nil nil ((#("undo
+" 0 4 (fontified t) 4 5 (fontified t)) . 3475) (undo-tree-id90 . -5) (undo-tree-id91 . -4) (undo-tree-id92 . -5) (undo-tree-id93 . -5) (undo-tree-id94 . -5) (undo-tree-id95 . -3) 3478) nil (25872 24071 348199 346000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 3474) (undo-tree-id86 . -1) (undo-tree-id87 . -1) (undo-tree-id88 . -1) (undo-tree-id89 . -1)) nil (25872 24071 348183 981000) 0 nil])
+([nil nil ((#("(setq evil-want-C-u-scroll t)
+(evil-set-undo-system 'undo-redo)
+
+" 0 1 (fontified t) 1 5 (face font-lock-keyword-face fontified t) 5 29 (fontified t) 29 30 (fontified t) 30 51 (fontified t) 51 63 (fontified t) 63 64 (fontified t) 64 65 (fontified t)) . 3410) (undo-tree-id77 . -64) (undo-tree-id78 . 2) (undo-tree-id79 . -64) (undo-tree-id80 . -64) (undo-tree-id81 . -30) (undo-tree-id82 . -64) (undo-tree-id83 . -64) (undo-tree-id84 . -64) (undo-tree-id85 . -65) 3474) nil (25872 24071 348177 346000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 2813 . 2814) (#("
+" 0 1 (fontified nil)) . -2878) (2813 . 2879) 2782) nil (25872 24071 348162 191000) 0 nil])
+([nil nil ((2813 . 2814) 2782) nil (25872 24071 348157 302000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 2879) (undo-tree-id75 . -1) (undo-tree-id76 . -1)) nil (25872 24071 348147 734000) 0 nil])
+([nil current ((#(";; settings for later stuff
+" 0 3 (face font-lock-comment-delimiter-face fontified t) 3 28 (face font-lock-comment-face fontified t)) . 2754) (undo-tree-id102 . -27) (undo-tree-id103 . -28) (t 25872 24071 357530 561000)) nil (25872 24074 177519 626000) 0 nil])
+nil

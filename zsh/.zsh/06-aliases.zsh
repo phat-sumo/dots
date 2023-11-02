@@ -36,7 +36,7 @@ alias gs="gs -dNOSAFER"
 
 if [[ $OS =~ "Linux" ]]; then
   alias ls="ls --color=auto"
-  alias u="paru --sudoloop -Syu && clcache"
+  alias u="paru --sudoloop -Syu"
 else # mac os / satsuki
   alias python=python3
   alias u="brew update && brew upgrade"

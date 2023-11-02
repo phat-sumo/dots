@@ -1,4 +1,4 @@
-# sxhkd config 
+# sxhkd config
 
 super + Escape
 	msv restart sxhkd; \
@@ -6,8 +6,8 @@ super + Escape
 
 ### program launching ###
 
-super Return
-	st
+super Return {_,shift}
+	{st, emacs}
 
 super c
 	firefox --new-window
@@ -19,29 +19,29 @@ super d
 super s
 	sleep 0.1 && screenshot
 
-super y
-	dwmc togglescratch
+super {y,e}
+	dwmc {togglescratch, toggleemacs}
 
 super u {_,ctrl}
-	dunstctl {close, set-paused toggle}
+	dunstctl {close,set-paused toggle}
 
 ### sleep & hibernate ###
 
-super ctrl z {_, shift}
-	sudo {zzz, ZZZ}
+super ctrl z {_,shift}
+	sudo {zzz,ZZZ}
 
-super x {_, ctrl, ctrl shift}
-	{slock, slock &; sudo zzz, slock &; sudo ZZZ}
+super x {_,ctrl,ctrl shift}
+	{slock,slock &; sudo zzz,slock &; sudo ZZZ}
 
 ### brightness ###
 
-XF86MonBrightnessUp {_, super, ctrl, ctrl shift, shift}
-	{xbacklight -inc 5, xbacklight -set 30, derp i, aderp i, notify-send -t 500 brightness: $(xbacklight -get)} 
+XF86MonBrightnessUp {_,super,ctrl,ctrl shift,shift}
+	{xbacklight -inc 5,xbacklight -set 30,derp i,aderp i,notify-send -t 500 brightness: $(xbacklight -get)}
 
-XF86MonBrightnessDown {_, super, ctrl, ctrl shift, shift}
-	{xbacklight -dec 5, xbacklight -set 0, derp d, aderp d, notify-send -t 500 brightness: $(xbacklight -get)} 
+XF86MonBrightnessDown {_,super,ctrl,ctrl shift,shift}
+	{xbacklight -dec 5,xbacklight -set 0,derp d,aderp d,notify-send -t 500 brightness: $(xbacklight -get)}
 
-### media keys ### 
+### media keys ###
 
 XF86AudioLowerVolume
 	vold
@@ -55,7 +55,7 @@ XF86AudioMicMute
 XF86Tools
 	volg
 
-super m  {_, shift}
+super m  {_,shift}
 	playerctl -p {spotify,vlc} play-pause
 
 ### dwm ###
@@ -82,7 +82,7 @@ super ctrl shift {q,r}
 	dwmc quit {0,1}
 
 super Tab
-	dwmc viewprev 
+	dwmc viewprev
 
 super space
 	dwmc zoom
@@ -97,7 +97,7 @@ super {_,ctrl}{_,shift} {0}
   dwmc {_,toggle}{viewex,tagex} {9}
 
 super {_,shift} {period,comma}
-	dwmc {focusmon, tagmon} {-,+}1
+	dwmc {focusmon,tagmon} {-,+}1
 
 super minus
 	dwmc viewall
@@ -108,9 +108,9 @@ super shift {a,s}
 super shift ctrl s
 	dwmc setgaps 0
 
-# manage bar turning on or off via super, with any modifier combination
-Super_L {_, ctrl} {_, alt} {_, shift}
+# manage bar turning on or off via super,with any modifier combination
+Super_L {_,ctrl} {_,alt} {_,shift}
 	dwmc holdbar 1
 
-@Super_L {_, ctrl} {_, alt} {_, shift}
+@Super_L {_,ctrl} {_,alt} {_,shift}
 	dwmc holdbar 0

@@ -1,0 +1,308 @@
+#+title: wtf is this
+#+author: phat_sumo
+#+startup: fold
+
+* org
+
+todo: check out org-roam and actually set up some good bindings for org mode
+
+org is actually use-packaged in init.el in order to properly tangle this file
+
+#+begin_src emacs-lisp
+  (global-set-key (kbd "C-c l") #'org-store-link)
+  (global-set-key (kbd "C-c a") #'org-agenda)
+  (global-set-key (kbd "C-c c") #'org-capture)
+  (setopt org-pretty-entities t)
+
+#+end_src
+
+
+#+begin_src emacs-lisp
+  (require 'org-tempo)
+#+end_src
+
+* evil
+
+first off, actually set up a few plugins with evil integration
+
+#+begin_src emacs-lisp
+
+  (use-package undo-tree
+    :ensure t
+    :config
+    (global-undo-tree-mode)
+    (setq undo-tree-auto-save-history t)
+    (setq undo-tree-history-directory-alist '(("." . "~/.config/emacs/undo"))))
+
+  (use-package evil-commentary
+    :config
+    (evil-commentary-mode))
+
+#+end_src
+
+now install evil
+
+#+begin_src emacs-lisp
+
+
+  (use-package evil
+    :demand t
+    :custom
+    (evil-default-cursor 'hbar)
+    (evil-normal-state-cursor 'hbar)
+    (evil-insert-state-cursor 'hbar)
+    (evil-visual-state-cursor 'hbar)
+    (evil-motion-state-cursor 'hbar)
+    (evil-replace-state-cursor 'hbar)
+    (evil-operator-state-cursor 'hbar)
+    (evil-undo-system 'undo-tree)
+    (evil-want-C-u-scroll t)
+    (evil-want-C-i-jump t)
+    (evil-want-C-o-jump t)
+    :config
+    (evil-mode))
+
+#+end_src
+
+finally, post-load plugin interactions
+
+#+begin_src emacs-lisp
+
+  ;; might want to get rid of this someday- the package claims that emacs
+  ;; keymaps are less convoluted and it a bit easier to work with
+  ;; https://github.com/cofi/evil-leader
+  (use-package evil-leader
+    :init
+    (setq evil-leader/leader "<SPC>")
+    (evil-leader/set-key "w" 'save-buffer
+                         "x" 'save-buffers-kill-emacs
+                         "q" 'kill-emacs)
+    :config
+    (global-evil-leader-mode))
+
+  (use-package evil-numbers
+    :init
+    (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
+    (define-key evil-normal-state-map (kbd "C-S-a") 'evil-numbers/dec-at-pt))
+
+  (use-package evil-org
+    :ensure t
+    :hook (org-mode . evil-org-mode)
+    :config
+    (require 'evil-org-agenda)
+    (evil-org-agenda-set-keys))
+
+  ;; necessary so the bar doesn't get weird
+  (use-package all-the-icons
+    :ensure t)
+#+end_src
+
+* comp/lsp
+
+set up corfu as the completion engine
+
+#+begin_src emacs-lisp
+
+  (use-package corfu
+    :custom
+    (corfu-cycle t)
+    (corfu-auto t)
+    ;; optionally use tab for cycling, default is `corfu-complete'.
+    ;; these need a little investigation first
+    ;; :bind (:map corfu-map
+    ;;             ("M-SPC"      . corfu-insert-separator)
+    ;;             ("TAB"        . corfu-next)
+    ;;             ([tab]        . corfu-next)
+    ;;             ("S-TAB"      . corfu-previous)
+    ;;             ([backtab]    . corfu-previous)
+    ;;             ("S-<return>" . corfu-insert)
+    ;;             ("RET"        . nil))
+    :config
+    (global-corfu-mode)
+    (corfu-history-mode)
+    (corfu-popupinfo-mode))
+
+#+end_src
+
+extensions via cape!
+
+#+begin_src emacs-lisp
+
+  ;; Add extensions
+  (use-package cape
+    ;; Bind dedicated completion commands
+    ;; Alternative prefix keys: C-c p, M-p, M-+, ...
+    :bind (("C-c p p" . completion-at-point) ;; capf
+           ("C-c p t" . complete-tag)        ;; etags
+           ("C-c p d" . cape-dabbrev)        ;; or dabbrev-completion
+           ("C-c p h" . cape-history)
+           ("C-c p f" . cape-file)
+           ("C-c p k" . cape-keyword)
+           ("C-c p s" . cape-elisp-symbol)
+           ("C-c p e" . cape-elisp-block)
+           ("C-c p a" . cape-abbrev)
+           ("C-c p l" . cape-line)
+           ("C-c p w" . cape-dict)
+           ("C-c p :" . cape-emoji)
+           ("C-c p \\" . cape-tex)
+           ("C-c p _" . cape-tex)
+           ("C-c p ^" . cape-tex)
+           ("C-c p &" . cape-sgml)
+           ("C-c p r" . cape-rfc1345))
+    :init
+    ;; Add to the global default value of `completion-at-point-functions' which is
+    ;; used by `completion-at-point'.  The order of the functions matters, the
+    ;; first function returning a result wins.  Note that the list of buffer-local
+    ;; completion functions takes precedence over the global list.
+    (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+    (add-to-list 'completion-at-point-functions #'cape-file)
+    (add-to-list 'completion-at-point-functions #'cape-elisp-block)
+    ;;(add-to-list 'completion-at-point-functions #'cape-history)
+    ;;(add-to-list 'completion-at-point-functions #'cape-keyword)
+    ;;(add-to-list 'completion-at-point-functions #'cape-tex)
+    ;;(add-to-list 'completion-at-point-functions #'cape-sgml)
+    ;;(add-to-list 'completion-at-point-functions #'cape-rfc1345)
+    ;;(add-to-list 'completion-at-point-functions #'cape-abbrev)
+    ;;(add-to-list 'completion-at-point-functions #'cape-dict)
+    ;;(add-to-list 'completion-at-point-functions #'cape-elisp-symbol)
+    ;;(add-to-list 'completion-at-point-functions #'cape-line)
+  )
+
+#+end_src
+
+now for some lsp
+
+#+begin_src emacs-lisp
+
+  (use-package lsp-mode
+    :ensure t
+    :init
+    (setq lsp-keymap-prefix "C-c l")
+    :hook (
+            (lsp-mode . lsp-enable-which-key-integration))
+    :commands lsp)
+
+#+end_src
+
+so i guess i'll just toss some new language servers in there at some point
+
+also let's grab some extensions too
+
+#+begin_src emacs-lisp
+
+  (use-package lsp-ui :commands lsp-ui-mode)
+
+#+end_src
+
+* pretty
+#+begin_src emacs-lisp
+  (use-package nerd-icons
+    :ensure t)
+
+  (use-package doom-modeline
+    :ensure t
+    :config
+    (setq doom-modeline-height 10)
+    (doom-modeline-mode 1))
+
+  (use-package doom-themes
+    :ensure t
+    :config
+    (setq doom-themes-enable-bold t
+          doom-themes-enable-italic t)
+    (load-theme 'doom-meltbus t)
+
+    ;; flashing mode-line on error
+    (doom-themes-visual-bell-config))
+
+  ;; eventually add:
+  ; (doom-themes-org-config)
+
+  ;; and even more eventually
+  ; https://discourse.doomemacs.org/t/how-to-switch-customize-or-write-themes/37
+
+  (elpaca-wait)
+
+#+end_src
+
+#+begin_center
+ asd;flkj
+#+end_center
+
+* misc
+
+#+begin_src emacs-lisp
+
+  (use-package which-key
+    :ensure t
+    :config
+    (which-key-mode))
+
+  (use-package ag
+    :ensure t)
+
+  ;; allow reopening file as root
+  (use-package sudo-edit
+    :ensure t)
+
+  (use-package editorconfig
+    :ensure t
+    :config
+    (editorconfig-mode t))
+
+  (setq initial-scratch-message ";; oh look this is how you set this!
+  ")
+
+  (setq help-window-select t)
+
+  ;; don't follow symlinks to their real locations
+  (setq vc-follow-symlinks nil)
+
+  ;; sane scrolling values
+  (setq scroll-conservatively 101)
+  (setq scroll-margin 3)
+
+  (pixel-scroll-precision-mode t)
+
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(custom-safe-themes
+      '("f4d1b183465f2d29b7a2e9dbe87ccc20598e79738e5d29fc52ec8fb8c576fcfd" "9d29a302302cce971d988eb51bd17c1d2be6cd68305710446f658958c0640f68" "b9761a2e568bee658e0ff723dd620d844172943eb5ec4053e2b199c59e0bcc22" "7e377879cbd60c66b88e51fad480b3ab18d60847f31c435f15f5df18bdb18184" "38c0c668d8ac3841cb9608522ca116067177c92feeabc6f002a27249976d7434" "3fe1ebb870cc8a28e69763dde7b08c0f6b7e71cc310ffc3394622e5df6e4f0da" "162201cf5b5899938cfaec99c8cb35a2f1bf0775fc9ccbf5e63130a1ea217213" "3de5c795291a145452aeb961b1151e63ef1cb9565e3cdbd10521582b5fd02e9a" default)))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   )
+
+  (elpaca-wait)
+
+  (toggle-scroll-bar -1)
+
+  (setq tab-always-indent 'complete)
+
+#+end_src
+
+* keybinds
+
+use bind-key from use-package for convenient keybinding
+
+#+begin_src emacs-lisp
+
+  (require 'bind-key)
+
+  (defun load-conf ()
+    (interactive)
+    (find-file "~/.config/emacs/conf.org"))
+
+  (bind-key "C-c x" 'load-conf)
+
+  ;; maybe bind this to something?
+  (bind-key "C-c n" 'display-line-numbers-mode)
+  (setq display-line-numbers-type 'relative)
+
+
+#+end_src

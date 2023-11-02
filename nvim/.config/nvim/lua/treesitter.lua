@@ -80,5 +80,5 @@ if require("nvim-treesitter.parsers").has_parser "svelte" then
 		"=" @operator
   ]]
 
-	require("vim.treesitter.query").set_query("svelte", "highlights", hi_query)
+	require("vim.treesitter.query").set("svelte", "highlights", hi_query)
 end
