@@ -2,17 +2,17 @@
 @import "non_floating_sharp_tabs.css";
 
 /* DISABLE URL BORDER FATNESS */
-    
+
 #nav-bar{ --toolbar-field-focus-border-color: transparent}
 
 
 /* This gets rid of the shadow, prevents the expansion of the URL bar*/
 
-#urlbar:focus-within > #urlbar-background {
-    box-shadow: none !important;
-    border-color: -moz-accent-color !important;
-    border-width: 1px !important;
-}
+/* #urlbar:focus-within > #urlbar-background { */
+/*     box-shadow: none !important; */
+/*     border-color: -moz-accent-color !important; */
+/*     border-width: 1px !important; */
+/* } */
 
 #urlbar[breakout][breakout-extend] {
     top: calc((var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2) !important;
@@ -27,6 +27,11 @@
 }
 
 
+:root {
+  --tabpanel-background-color: rgb(3, 3, 3) !important;
+  --newtab-text-primary-color: rgb(3, 3, 3) !important;
+  --tab-selected-bgcolor: rgb(3, 3, 3) !important;
+}
 
 /* Increase favicon size */
 
@@ -53,12 +58,12 @@
   border-radius: 0 !important;
  }
 
-*::selection { 
+*::selection {
   background-color: #fe3198 !important;
   color: #fbf5f3 !important;
 }
 
-*::-moz-selection { 
+*::-moz-selection {
   background-color: #fe3198 !important;
   color: #fbf5f3 !important;
 }

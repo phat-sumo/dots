@@ -10,3 +10,11 @@ emacs/.config/emacs/autosave/
 emacs/.config/emacs/auto-save-list/
 emacs/.config/emacs/backups/
 emacs/.config/emacs/undo/
+emacs/.config/emacs/eln-cache/
+emacs/.config/emacs/.org-id-locations
+emacs/.config/emacs/bookmarks
+emacs/.config/emacs/org-roam.db
+emacs/.config/emacs/places
+emacs/.config/emacs/tramp
+emacs/.config/emacs/.lsp-session-*
+*.elc

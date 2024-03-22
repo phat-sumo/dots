@@ -1,11 +1,11 @@
-#                 ██      
-#                ░██      
-#  ██████  ██████░██      
-# ░░░░██  ██░░░░ ░██████  
-#    ██  ░░█████ ░██░░░██ 
-#   ██    ░░░░░██░██  ░██ 
-#  ██████ ██████ ░██  ░██ 
-# ░░░░░░ ░░░░░░  ░░   ░░  
+#                 ██
+#                ░██
+#  ██████  ██████░██
+# ░░░░██  ██░░░░ ░██████
+#    ██  ░░█████ ░██░░░██
+#   ██    ░░░░░██░██  ░██
+#  ██████ ██████ ░██  ░██
+# ░░░░░░ ░░░░░░  ░░   ░░
 #
 # shamelessly stolen from xero
 #
@@ -13,14 +13,14 @@
 
 # man for zsh builtins
 if ! [[ $NAME =~ "Ubuntu" ]]; then
-  unalias run-help
-  autoload run-help
+    unalias run-help
+    autoload run-help
 fi
 alias zshman="run-help"
 alias vim="nvim"
 alias vi="nvim"
-alias godown="cd ~/Downloads"
-alias cleardown="rm -rf ~/Downloads/*"
+alias godown="cd ~/downloads"
+alias cleardown="rm -rf ~/downloads/*"
 eval $(thefuck --alias)
 alias mci="sudo make clean install"
 alias mr="make run"
@@ -32,23 +32,23 @@ alias less="less -R"
 alias v='f -e nvim'
 alias git-adog='git log --all --decorate --oneline --graph'
 alias sl='ls'
-alias gs="gs -dNOSAFER"
+alias e='emacsclient --socket-name=/tmp/emacs1000/emacsd -r -n'
+alias ne='emacsclient --socket-name=/tmp/emacs1000/emacsd -c -n'
 
 if [[ $OS =~ "Linux" ]]; then
-  alias ls="ls --color=auto"
-  alias u="paru --sudoloop -Syu"
+    alias ls="ls --color=auto"
+    alias u="paru --sudoloop -Syu"
 else # mac os / satsuki
-  alias python=python3
-  alias u="brew update && brew upgrade"
+    alias python=python3
+    alias u="brew update && brew upgrade"
 fi
 
 if [[ $NAME =~ "Void" ]]; then
-  alias u="sudo xbps-install -Su"
-  alias gu="sudo xbps-install -Su -R https://mirrors.servercentral.com/voidlinux/current -R https://mirrors.servercentral.com/voidlinux/current/nonfree" 
+    alias u="sudo xbps-install -Su"
+    alias gu="sudo xbps-install -Su -R https://mirrors.servercentral.com/voidlinux/current -R https://mirrors.servercentral.com/voidlinux/current/nonfree"
 elif [[ $NAME =~ "Ubuntu" ]]; then
-  alias u="sudo apt update && sudo apt upgrade"
+    alias u="sudo apt update && sudo apt upgrade"
 fi
-
 
 # not mine
 #alias xyzzy="echo nothing happens"
@@ -114,42 +114,42 @@ fi
 #alias docstats="sudo docker ps -q | xargs  docker stats --no-stream"
 ##█▓▒░ update mpd database
 #function genplaylist() {
-  #cd ~/music
-  #find . -name '*.mp3' -o -name '*.flac'|sed -e 's%^./%%g' > ~/.config/mpd/playlists/all.m3u
-  #mpc clear
-  #mpc load all.m3u
-  #mpc update
+#cd ~/music
+#find . -name '*.mp3' -o -name '*.flac'|sed -e 's%^./%%g' > ~/.config/mpd/playlists/all.m3u
+#mpc clear
+#mpc load all.m3u
+#mpc update
 #}
 ##█▓▒░ tmux
 #function t() {
-  #X=$#
-  #[[ $X -eq 0 ]] || X=X
-  #tmux new-session -A -s $X
+#X=$#
+#[[ $X -eq 0 ]] || X=X
+#tmux new-session -A -s $X
 #}
 ##█▓▒░ cli mail
 #function email() {
-	#echo $3 | mutt -s $2 $1
+#echo $3 | mutt -s $2 $1
 #}
 ##█▓▒░ read stuff like manpages
 #function md() {
-    #pandoc -s -f markdown -t man "$*" | man -l -
+#pandoc -s -f markdown -t man "$*" | man -l -
 #}
 #function manwww() {
-	#curl -skL "$*" | pandoc -s -f html -t man | man -l -
+#curl -skL "$*" | pandoc -s -f html -t man | man -l -
 #}
 ##█▓▒░ nullpointer url shortener
 #function short() {
-  #curl -F"shorten=$*" https://0x0.st
+#curl -F"shorten=$*" https://0x0.st
 #}
 ##█▓▒░ smaller scrots
 #function scrot_area() {
-  #read -r G < <(slop -f "%g")
-  #import -window root -crop $G ~/$(date "+%Y-%m-%d_%H-%M-%S")_slop_scrot.png
+#read -r G < <(slop -f "%g")
+#import -window root -crop $G ~/$(date "+%Y-%m-%d_%H-%M-%S")_slop_scrot.png
 #}
 ##█▓▒░ record video
 #function vid_area() {
-  #read -r X Y W H G ID < <(slop -f "%x %y %w %h %g %i")
-  #ffmpeg -f x11grab -s "$W"x"$H" -i :0.0+$X,$Y -f alsa -i pulse ~/$(date "+%Y-%m-%d_%H-%M-%S")_slop_vid.webm
+#read -r X Y W H G ID < <(slop -f "%x %y %w %h %g %i")
+#ffmpeg -f x11grab -s "$W"x"$H" -i :0.0+$X,$Y -f alsa -i pulse ~/$(date "+%Y-%m-%d_%H-%M-%S")_slop_vid.webm
 #}
 ## i hate this
 #alias x="startx"

@@ -1,11 +1,11 @@
-#                 ██      
-#                ░██      
-#  ██████  ██████░██      
-# ░░░░██  ██░░░░ ░██████  
-#    ██  ░░█████ ░██░░░██ 
-#   ██    ░░░░░██░██  ░██ 
-#  ██████ ██████ ░██  ░██ 
-# ░░░░░░ ░░░░░░  ░░   ░░  
+#                 ██
+#                ░██
+#  ██████  ██████░██
+# ░░░░██  ██░░░░ ░██████
+#    ██  ░░█████ ░██░░░██
+#   ██    ░░░░░██░██  ░██
+#  ██████ ██████ ░██  ░██
+# ░░░░░░ ░░░░░░  ░░   ░░
 #
 # shamelessly stolen from xero
 #
@@ -30,7 +30,7 @@ ICO_DIVERGED="↕"
 COLOR_ROOT="%F{red}"
 COLOR_USER="%F{cyan}"
 COLOR_NORMAL="%F{white}"
-COLOR_HOST="%F{magenta}"
+COLOR_HOST="%F{red}"
 PROMPT_STYLE="phat"
 
 
@@ -99,12 +99,12 @@ GIT_PROMPT() {
 case "$PROMPT_STYLE" in
 #█▓▒░ ascii
 ascii)
-PROMPT='%{$bg[cyan]%} %F{black}%~ $(GIT_PROMPT)$reset_color 
+PROMPT='%{$bg[cyan]%} %F{black}%~ $(GIT_PROMPT)$reset_color
 %f'
 ;;
 #█▓▒░ arrows
 arrows)
-PROMPT='%{$bg[cyan]%}%F{black} %~ $(GIT_PROMPT)$reset_color 
+PROMPT='%{$bg[cyan]%}%F{black} %~ $(GIT_PROMPT)$reset_color
 %f'
 ;;
 #█▓▒░ ninja
@@ -113,7 +113,7 @@ PROMPT='%F{white}
         ▟▙  ${USER_LEVEL}%~   %F{white}$(GIT_PROMPT) %F{white}
 ▟▒${USER_LEVEL}░░░░░░░%F{white}▜▙▜████████████████████████████████▛
 ▜▒${USER_LEVEL}░░░░░░░%F{white}▟▛▟▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▛
-        ▜▛  
+        ▜▛
             %f'
 ;;
 #█▓▒░ dual line
@@ -132,6 +132,3 @@ PROMPT='${COLOR_HOST}$(hostname):${USER_LEVEL}[${COLOR_NORMAL}%~${USER_LEVEL}]$(
 ;;
 
 esac
-
-
-

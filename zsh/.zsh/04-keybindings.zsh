@@ -1,11 +1,11 @@
-#                 ██      
-#                ░██      
-#  ██████  ██████░██      
-# ░░░░██  ██░░░░ ░██████  
-#    ██  ░░█████ ░██░░░██ 
-#   ██    ░░░░░██░██  ░██ 
-#  ██████ ██████ ░██  ░██ 
-# ░░░░░░ ░░░░░░  ░░   ░░  
+#                 ██
+#                ░██
+#  ██████  ██████░██
+# ░░░░██  ██░░░░ ░██████
+#    ██  ░░█████ ░██░░░██
+#   ██    ░░░░░██░██  ░██
+#  ██████ ██████ ░██  ░██
+# ░░░░░░ ░░░░░░  ░░   ░░
 #
 # shamelessly stolen from xero
 #
@@ -13,7 +13,7 @@
 #typeset -A key
 
 # vi mode, with .1s timeout, proper backspace
-bindkey -v 
+bindkey -v
 export KEYTIMEOUT=0
 bindkey "^?" backward-delete-char
 
@@ -79,7 +79,7 @@ bindkey '^e' end-of-line
 # if mode indicator wasn't setup by theme, define default
 if [[ "$MODE_INDICATOR" == "" ]]; then
   #MODE_INDICATOR="%{$fg_bold[magenta]%}<%{$fg[magenta]%}<<%{$reset_color%}"
-  MODE_INDICATOR="%F{magenta}<<"
+  MODE_INDICATOR="%F{red}<<"
 fi
 
 function vi_mode_prompt_info() {
@@ -91,7 +91,7 @@ function check_last_exit_code() {
   if [[ $LAST_EXIT_CODE -ne 0 ]]; then
     local EXIT_CODE_PROMPT=' '
     #EXIT_CODE_PROMPT+="%{$fg[magenta]%}-%{$reset_color%}"
-    EXIT_CODE_PROMPT+="%{$fg_bold[magenta]%}$LAST_EXIT_CODE%{$reset_color%}"
+    EXIT_CODE_PROMPT+="%{$fg_bold[red]%}$LAST_EXIT_CODE%{$reset_color%}"
     #EXIT_CODE_PROMPT+="%{$fg[magenta]%}-%{$reset_color%}"
     echo "$EXIT_CODE_PROMPT"
   fi
@@ -143,8 +143,8 @@ fi
 # fi
 
 if [[ $OS =~ "Mac" ]]; then
-  source /usr/local/Cellar/fzf/0.22.0/shell/key-bindings.zsh 
-  source /usr/local/Cellar/fzf/0.22.0/shell/completion.zsh 
+  source /usr/local/Cellar/fzf/0.22.0/shell/key-bindings.zsh
+  source /usr/local/Cellar/fzf/0.22.0/shell/completion.zsh
 elif [[ $OS =~ "OpenBSD" ]]; then
   source /usr/local/share/fzf/zsh/key-bindings.zsh
   source /usr/local/share/fzf/zsh/completion.zsh
@@ -154,6 +154,6 @@ elif [[ $NAME =~ "Ubuntu" ]]; then
 else
   source /usr/share/fzf/key-bindings.zsh
   source /usr/share/fzf/completion.zsh
-fi 
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

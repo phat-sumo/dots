@@ -7,7 +7,7 @@ super + Escape
 ### program launching ###
 
 super Return {_,shift}
-	{st, emacs}
+	{st, emacsclient --socket-name=/tmp/emacs1000/emacsd -c -n}
 
 super c
 	firefox --new-window
@@ -55,8 +55,9 @@ XF86AudioMicMute
 XF86Tools
 	volg
 
+# just escaping the commas in this command sequence
 super m  {_,shift}
-	playerctl -p {spotify,vlc} play-pause
+	playerctl -p {spotify\,vlc,vlc\,spotify} play-pause
 
 ### dwm ###
 
