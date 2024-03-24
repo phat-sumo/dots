@@ -31,3 +31,6 @@
 [submodule "zsh-z"]
 	path = zsh-z
 	url = https://github.com/agkozak/zsh-z.git
+[submodule "scripts"]
+	path = scripts
+	url = git@github.com:phat-sumo/scripts.git
