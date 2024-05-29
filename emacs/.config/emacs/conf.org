@@ -1,17 +1,13 @@
-#+title: wtf is this
+#+title: dots
 #+author: phat_sumo
 #+startup: fold
 
 
 * org
 
-todo: check out [[https://github.com/org-roam/org-roam][org-roam]] and actually set up some good bindings for org mode
-
 org is actually use-packaged in init.el in order to properly tangle this file
 
 todo: [[https://github.com/progfolio/auto-tangle-mode.el/blob/master/auto-tangle-mode.el][set up auto-tangle-mode from progfolio]] when i'm ready to move to a single conf file
-
-""
 
 #+begin_src emacs-lisp
 
@@ -39,40 +35,80 @@ consider adding [[https://github.com/jdtsmith/org-modern-indent][org-modern-inde
 
 #+begin_src emacs-lisp
 
-    (require 'org-tempo)
+  (require 'org-tempo)
 
-    (use-package org-modern
-      :hook (org-ode . org-modern-mode)
-      :init (global-org-modern-mode))
+  #+end_src
 
-    (use-package org-appear
-      :custom (org-appear-autoentities t)
-      :hook (org-mode . org-appear-mode))
+make it a little easier to add src blocks to tangled files :>
+
+#+begin_src emacs-lisp
+  (add-to-list 'org-structure-template-alist '("se" . "src emacs-lisp"))
+#+end_src
+
+appearance features for org
+
+#+begin_src emacs-lisp
+
+  (use-package org-modern
+    :hook (org-ode . org-modern-mode)
+    :init (global-org-modern-mode))
+
+  (use-package org-appear
+    :custom (org-appear-autoentities t)
+    :hook (org-mode . org-appear-mode))
 
 #+end_src
 
 org-roam - so that i can get obsidian-like stuff in emacs!
 
-[[id:b2485dd1-8620-441a-af95-3f77cd1a47c0][test]]
+i also probably ought to include some [[https://systemcrafters.net/build-a-second-brain-in-emacs/capturing-notes-efficiently/][better capture templates]]
 
 #+begin_src emacs-lisp
 
   (use-package org-roam
     :ensure t
     :custom
-    (org-roam-directory "~/notes")
+    (org-roam-directory "~/docs/org-roam")
+    (org-roam-capture-templates
+      '(("d" "default" plain "%?"
+        :target (file+head "${slug}.org" "#+created: %<%Y-%m-%d%d:%H%M%S>\n#+title: ${title}")
+        :unnarrowed t)))
+
+    (org-roam-dailies-directory "~/docs/org-roam/dailies")
+    (org-roam-dailies-capture-templates
+     '(("d" "default" entry
+         "* %?"
+         :target (file+head "%<%Y-%m-%d>.org"
+                            "#+title: %<%Y-%m-%d>\n"))))
     :config
     (org-roam-db-autosync-mode))
 
-  (use-package org-roam-ui
-    :after org-roam
-    :custom
-    (org-roam-ui-sync-theme t)
-    (org-roam-ui-follow t)
-    (org-roam-ui-update-on-save t)
-    :config
-    (org-roam-ui-mode))
+ #+end_src
 
+wrapping this in ~when~ prevents a standalone emacs process from running
+another ~org-roam-ui~ server!
+
+#+begin_src emacs-lisp
+
+  (when (daemonp)
+    (use-package org-roam-ui
+      :after org-roam
+      :custom
+      (org-roam-ui-sync-theme t)
+      (org-roam-ui-follow t)
+      (org-roam-ui-update-on-save t)
+      :config
+      (org-roam-ui-mode)))
+  #+end_src
+
+
+*** TODO add option for opening todo in new frame and current window
+
+#+begin_src emacs-lisp
+
+  (defun org-roam-goto-todo ()
+    (interactive)
+    (org-roam-node-visit (org-roam-node-from-title-or-alias "todo") t))
 
 #+end_src
 
@@ -101,12 +137,12 @@ it behaves similarly to kakoune, and that /does/ seem a bit better tbh
       (evil-shift-width 2)
       :config
       (setq evil-default-cursor        'hbar
-      evil-normal-state-cursor   'hbar
-      evil-insert-state-cursor   'hbar
-      evil-visual-state-cursor   'hbar
-      evil-motion-state-cursor   'hbar
-      evil-replace-state-cursor  'hbar
-      evil-operator-state-cursor 'hbar)
+            evil-normal-state-cursor   'hbar
+            evil-insert-state-cursor   'hbar
+            evil-visual-state-cursor   'hbar
+            evil-motion-state-cursor   'hbar
+            evil-replace-state-cursor  'hbar
+            evil-operator-state-cursor 'hbar)
       (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
       (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
       (define-key evil-insert-state-map (kbd "C-v") 'cua-paste)
@@ -197,7 +233,7 @@ format-all is here so that load order makes sense (gotta fix that sometime)
     :commands format-all-mode
     :hook (prog-mode . format-all-mode)
     :config
-    (setq-default format-all-formatters '(("C" (astyle "--mode=c"))
+    (setq-default format-all-formatters '(("C" (clang-format "-style=file:/home/phat_sumo/.clang-format"))
                                           ("Shell" (shfmt)))))
 
   (defun save-buffer-no-format ()
@@ -238,17 +274,6 @@ format-all is here so that load order makes sense (gotta fix that sometime)
     (interactive)
     (kill-buffer)
     (delete-frame))
-
-  (evil-set-leader 'normal (kbd "SPC"))
-  (evil-define-key 'normal 'global (kbd "<leader>w") 'save-buffer)
-  (evil-define-key 'normal 'global (kbd "<leader>W") 'save-buffer-no-format)
-  (evil-define-key 'normal 'global (kbd "<leader>x") 'save-buffer-and-quit)
-  (evil-define-key 'normal 'global (kbd "<leader>!") 'kill-buffer-and-frame)
-  (evil-define-key 'normal 'global (kbd "<leader>q") 'quit-by-context)
-  (evil-define-key 'normal 'global (kbd "<leader>Q") 'delete-window)
-  (evil-define-key 'normal 'global (kbd "<leader>f") 'org-roam-capture)
-  (evil-define-key 'normal 'global (kbd "<leader>%") 'split-and-follow-vertically)
-  (evil-define-key 'normal 'global (kbd "<leader>\"") 'split-and-follow-horizontally)
 
     (use-package evil-numbers
       :init
@@ -599,68 +624,118 @@ let's add some other visual config to remove on frame creation, too
 #+begin_src emacs-lisp
 
 
-  (use-package which-key
-    :ensure t
-    :config
-    (which-key-setup-side-window-right-bottom)
-    (which-key-mode))
+    (use-package which-key
+      :ensure t
+      :config
+      (which-key-setup-side-window-right-bottom)
+      (which-key-mode))
 
-  (use-package exec-path-from-shell
-    :ensure t
-    :config
-    ;; (add-to-list 'after-make-frame-functions 'exec-path-from-shell)
-    (exec-path-from-shell-initialize))
+    (use-package exec-path-from-shell
+      :ensure t
+      :config
+      ;; (add-to-list 'after-make-frame-functions 'exec-path-from-shell)
+      (exec-path-from-shell-initialize))
 
-  (use-package ag
-    :ensure t)
+    (use-package ag
+      :ensure t)
 
-  ;; allow reopening file as root
-  (use-package sudo-edit
-    :ensure t)
+    ;; allow reopening file as root
+    (use-package sudo-edit
+      :ensure t)
 
-  (use-package editorconfig
-    :ensure t
-    :config
-    (editorconfig-mode t))
+    (use-package editorconfig
+      :ensure t
+      :config
+      (editorconfig-mode t))
 
-  (setq initial-scratch-message "")
+    (setq initial-scratch-message "")
 
-  (setq help-window-select t)
+    (setq help-window-select t)
 
-  ;; don't follow symlinks to their real locations
-  (setq vc-follow-symlinks nil)
+    ;; don't follow symlinks to their real locations
+    (setq vc-follow-symlinks nil)
 
-  ;; sane scrolling values
-  (setq scroll-conservatively 101)
-  (setq scroll-margin 3)
+    ;; sane scrolling values
+    (setq scroll-conservatively 101)
+    (setq scroll-margin 3)
 
-  (pixel-scroll-precision-mode t)
-  (setq pixel-scroll-precision-large-scroll-height 100)
+    (pixel-scroll-precision-mode t)
+    (setq pixel-scroll-precision-large-scroll-height 100)
 
-  (setq mouse-wheel-progressive-speed nil)
-  (setq mouse-wheel-scroll-amount '(1 ((shift) . hscroll)))
+    (setq mouse-wheel-progressive-speed nil)
+    (setq mouse-wheel-scroll-amount '(1 ((shift) . hscroll)))
 
-  ;; (setq scroll-step 1)
+    ;; (setq scroll-step 1)
 
-  ;; (setq mouse-wheel-scroll-amount '(2 ((shift) . 10) ((control) . nil)))
+    ;; (setq mouse-wheel-scroll-amount '(2 ((shift) . 10) ((control) . nil)))
 
-  (defun scratch-width ()
-    (set-frame-size (selected-frame) 1900 300 t))
+    (defun scratch-width ()
+      (set-frame-size (selected-frame) 1900 300 t))
 
-  (setq tab-always-indent 'complete)
-  (setq tab-width 2)
-  (setq sh-basic-offset 2)
+    (setq tab-always-indent 'complete)
+    (setq tab-width 2)
+    (setq sh-basic-offset 2)
 
-  (setq sentence-end-double-space nil)
+    (setq sentence-end-double-space nil)
 
-  (setq frame-inhibit-implied-resize t)
+    (setq frame-inhibit-implied-resize t)
 
-  (setq show-trailing-whitespace t)
+    (setq show-trailing-whitespace t)
+    (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
-  (setq uniquify-buffer-name-style 'forward)
+    (setq uniquify-buffer-name-style 'forward)
 
-  (setq save-place-file (locate-user-emacs-file "places"))
-  (save-place-mode t)
+    (setq save-place-file (locate-user-emacs-file "places"))
+    (save-place-mode t)
+
+    (setq use-short-answers t)
+    (setq use-dialog-box t)
+
+    (defun delete-current-file ()
+      (interactive)
+      (if (y-or-n-p (format "delete %s?" (buffer-name)))
+          (delete-file (buffer-file-name))
+          (princ (format "spared %s" (buffer-name)))))
+
+    (setq auth-source-save-behavior nil)
+
+  #+end_src
+
+prevent automatic decompression from attempting to expand ~.z~
+
+  #+begin_src emacs-lisp
+
+    (defun delete-array-from-list-by-first-elem (list target)
+      (dolist (item list)
+        (print item)
+        (when (equal target (aref item 0))
+          (delete item list))))
+
+    (delete-array-from-list-by-first-elem jka-compr-compression-info-list "\\.g?z\\'")
+
+    (add-to-list 'jka-compr-compression-info-list
+          ["\\[^\\.z].z\\'" "compressing" "gzip"
+            ("-c" "-q")
+            "uncompressing" "gzip"
+            ("-c" "-q" "-d")
+            t t "\37\213" zlib-decompress-region])
+
+    (add-to-list 'jka-compr-compression-info-list
+          ["\\.gz\\'" "compressing" "gzip"
+            ("-c" "-q")
+            "uncompressing" "gzip"
+            ("-c" "-q" "-d")
+            t t "\37\213" zlib-decompress-region])
+
+#+end_src
+
+wrap lines and modify line operations to work on visual lines, not source lines.
+this is sorta like the typical ~nnoremap j gj~ behavior that's typical in vim.
+
+if this starts misbehaving, it might be worth checking out [[https://github.com/YourFin/evil-better-visual-line][evil-better-visual-line]].
+
+#+begin_src emacs-lisp
+  (global-visual-line-mode)
 #+end_src
 
 let's hide those pesky backup files (and also make sure backing
@@ -683,66 +758,88 @@ use bind-key from use-package for convenient keybinding
 at some point i should set up [[https://github.com/abo-abo/lispy][lispy]] and [[https://github.com/noctuid/lispyville][lispyville]] for structured code editing
 it just seems kinda neat
 
+essential commands are set with leader for accessibility
+
+org-roam could really use better keybinds- [[https://www.reddit.com/r/OrgRoam/comments/lxl353/what_keybinding_remaps_have_you_done_for_org_roam/][this reddit post]] has some ideas
+
 #+begin_src emacs-lisp
 
-        (require 'bind-key)
+  (evil-set-leader 'normal (kbd "SPC"))
+  (evil-define-key 'normal 'global
+    (kbd "<leader>w")  'save-buffer
+    (kbd "<leader>W")  'save-buffer-no-format
+    (kbd "<leader>x")  'save-buffer-and-quit
+    (kbd "<leader>!")  'kill-buffer-and-frame
+    (kbd "<leader>q")  'quit-by-context
+    (kbd "<leader>Q")  'delete-window
+    (kbd "<leader>f")  'org-roam-node-find
+    (kbd "<leader>c")  'org-roam-capture
+    (kbd "<leader>d")  'org-roam-dailies-goto-today
+    (kbd "<leader>t")  'org-roam-goto-todo
+    (kbd "<leader>%")  'split-and-follow-vertically
+    (kbd "<leader>\"") 'split-and-follow-horizontally)
 
-        (defvar my-keys-minor-mode-map
-          (make-sparse-keymap)
-          "my-keys-minor-mode keymap.")
+  #+end_src
 
-        (define-minor-mode my-keys-minor-mode
-          "A minor mode so that my keybinds override any other mode."
-          :init-value t)
+#+begin_src emacs-lisp
 
-        (add-hook 'after-load-functions 'my-keys-have-priority)
+  (require 'bind-key)
 
-        (defun my-keys-have-priority (_file)
-          "Ensure that my keybindings retain priority over other minor modes.
+  (defvar my-keys-minor-mode-map
+    (make-sparse-keymap)
+    "my-keys-minor-mode keymap.")
 
-        Called via the `after-load-functions special hook."
-          (unless (eq (caar minor-mode-map-alist) 'my-keys-minor-mode)
-            (let ((mykeys (assq 'my-keys-minor-mode minor-mode-map-alist)))
-              (assq-delete-all 'my-keys-minor-mode minor-mode-map-alist)
-              (add-to-list 'minor-mode-map-alist mykeys))))
+  (define-minor-mode my-keys-minor-mode
+    "A minor mode so that my keybinds override any other mode."
+    :init-value t)
 
+  (add-hook 'after-load-functions 'my-keys-have-priority)
 
+  (defun my-keys-have-priority (_file)
+    "Ensure that my keybindings retain priority over other minor modes.
 
-        (defun load-conf ()
-          (interactive)
-          (find-file "~/.config/emacs/conf.org"))
-
-        (bind-key "C-c x" 'load-conf 'my-keys-minor-mode-map)
-
-        ;; maybe bind this to something?
-        (bind-key "C-c n" 'display-line-numbers-mode 'my-keys-minor-mode-map)
-        (setq display-line-numbers-type 'relative)
+  Called via the `after-load-functions special hook."
+    (unless (eq (caar minor-mode-map-alist) 'my-keys-minor-mode)
+      (let ((mykeys (assq 'my-keys-minor-mode minor-mode-map-alist)))
+        (assq-delete-all 'my-keys-minor-mode minor-mode-map-alist)
+        (add-to-list 'minor-mode-map-alist mykeys))))
 
 
-        (bind-key "C-+" (lambda ()
-                          (interactive) (set-font-pixelsize (+ font-pixelsize 1)))
-                        'my-keys-minor-mode-map)
-        (bind-key "C-_" (lambda ()
-                          (interactive) (set-font-pixelsize (- font-pixelsize 1)))
-                        'my-keys-minor-mode-map)
-        (bind-key "C-)" (lambda ()
-                          (interactive) (set-font-pixelsize 10))
-                        'my-keys-minor-mode-map)
+  (defun load-conf ()
+    (interactive)
+    (find-file "~/.config/emacs/conf.org"))
 
-        (use-package fzf
-          :bind
-          ;; todo: add some
-          :config
-          (setq fzf/args "-x --color bw --print-query --margin=1,0 --no-hscroll"
-              fzf/executable "fzf"
-              fzf/git-grep-args "-i --line-number %s"
-              ;; command used for `fzf-grep-*` functions
-              ;; example usage for ripgrep:
-              ;; fzf/grep-command "rg --no-heading -nH"
-              fzf/grep-command "grep -nrH"
-              ;; If nil, the fzf buffer will appear at the top of the window
-              fzf/position-bottom t
-              fzf/window-height 15))
+  (bind-key "C-c x" 'load-conf 'my-keys-minor-mode-map)
+
+  ;; maybe bind this to something?
+  (bind-key "C-c n" 'display-line-numbers-mode 'my-keys-minor-mode-map)
+  (setq display-line-numbers-type 'relative)
+
+
+  (bind-key "C-+" (lambda ()
+                    (interactive) (set-font-pixelsize (+ font-pixelsize 1)))
+                  'my-keys-minor-mode-map)
+  (bind-key "C-_" (lambda ()
+                    (interactive) (set-font-pixelsize (- font-pixelsize 1)))
+                  'my-keys-minor-mode-map)
+  (bind-key "C-)" (lambda ()
+                    (interactive) (set-font-pixelsize 10))
+                  'my-keys-minor-mode-map)
+
+  (use-package fzf
+    :bind
+    ;; todo: add some
+    :config
+    (setq fzf/args "-x --color bw --print-query --margin=1,0 --no-hscroll"
+        fzf/executable "fzf"
+        fzf/git-grep-args "-i --line-number %s"
+        ;; command used for `fzf-grep-*` functions
+        ;; example usage for ripgrep:
+        ;; fzf/grep-command "rg --no-heading -nH"
+        fzf/grep-command "grep -nrH"
+        ;; If nil, the fzf buffer will appear at the top of the window
+        fzf/position-bottom t
+        fzf/window-height 15))
 #+end_src
 
 * todo

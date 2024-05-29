@@ -56,69 +56,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(auth-source-save-behavior nil)
  '(custom-safe-themes
     '("f4d1b183465f2d29b7a2e9dbe87ccc20598e79738e5d29fc52ec8fb8c576fcfd" "9d29a302302cce971d988eb51bd17c1d2be6cd68305710446f658958c0640f68" "b9761a2e568bee658e0ff723dd620d844172943eb5ec4053e2b199c59e0bcc22" "7e377879cbd60c66b88e51fad480b3ab18d60847f31c435f15f5df18bdb18184" "38c0c668d8ac3841cb9608522ca116067177c92feeabc6f002a27249976d7434" "3fe1ebb870cc8a28e69763dde7b08c0f6b7e71cc310ffc3394622e5df6e4f0da" "162201cf5b5899938cfaec99c8cb35a2f1bf0775fc9ccbf5e63130a1ea217213" "3de5c795291a145452aeb961b1151e63ef1cb9565e3cdbd10521582b5fd02e9a" default))
- '(jka-compr-compression-info-list
-    '(["\\.Z\\'" "compressing" "compress"
-        ("-c")
-        "uncompressing" "gzip"
-        ("-c" "-q" "-d")
-        nil t "\37\235" zlib-decompress-region]
-       ["\\.bz2\\'" "bzip2ing" "bzip2" nil "bunzip2ing" "bzip2"
-         ("-d")
-         nil t "BZh" nil]
-       ["\\.tbz2?\\'" "bzip2ing" "bzip2" nil "bunzip2ing" "bzip2"
-         ("-d")
-         nil nil "BZh" nil]
-       ["\\.\\(?:tgz\\|svgz\\|sifz\\)\\'" "compressing" "gzip"
-         ("-c" "-q")
-         "uncompressing" "gzip"
-         ("-c" "-q" "-d")
-         t nil "\37\213" zlib-decompress-region]
-       ["\\[^\\.z].z\\'" "compressing" "gzip"
-         ("-c" "-q")
-         "uncompressing" "gzip"
-         ("-c" "-q" "-d")
-         t t "\37\213" zlib-decompress-region]
-       ["\\.gz\\'" "compressing" "gzip"
-         ("-c" "-q")
-         "uncompressing" "gzip"
-         ("-c" "-q" "-d")
-         t t "\37\213" zlib-decompress-region]
-       ["\\.lz\\'" "Lzip compressing" "lzip"
-         ("-c" "-q")
-         "Lzip uncompressing" "lzip"
-         ("-c" "-q" "-d")
-         t t "LZIP" nil]
-       ["\\.lzma\\'" "LZMA compressing" "lzma"
-         ("-c" "-q" "-z")
-         "LZMA uncompressing" "lzma"
-         ("-c" "-q" "-d")
-         t t "" nil]
-       ["\\.xz\\'" "XZ compressing" "xz"
-         ("-c" "-q")
-         "XZ uncompressing" "xz"
-         ("-c" "-q" "-d")
-         t t "\3757zXZ\0" nil]
-       ["\\.txz\\'" "XZ compressing" "xz"
-         ("-c" "-q")
-         "XZ uncompressing" "xz"
-         ("-c" "-q" "-d")
-         t nil "\3757zXZ\0" nil]
-       ["\\.dz\\'" nil nil nil "uncompressing" "gzip"
-         ("-c" "-q" "-d")
-         nil t "\37\213" nil]
-       ["\\.zst\\'" "zstd compressing" "zstd"
-         ("-c" "-q")
-         "zstd uncompressing" "zstd"
-         ("-c" "-q" "-d")
-         t t "(\265/\375" nil]
-       ["\\.tzst\\'" "zstd compressing" "zstd"
-         ("-c" "-q")
-         "zstd uncompressing" "zstd"
-         ("-c" "-q" "-d")
-         t nil "(\265/\375" nil]))
  '(org-link-frame-setup
     '((vm . vm-visit-folder-other-frame)
        (vm-imap . vm-visit-imap-folder-other-frame)

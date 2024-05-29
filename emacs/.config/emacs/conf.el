@@ -15,6 +15,8 @@
 
 (require 'org-tempo)
 
+(add-to-list 'org-structure-template-alist '("se" . "src emacs-lisp"))
+
 (use-package org-modern
   :hook (org-ode . org-modern-mode)
   :init (global-org-modern-mode))
@@ -26,18 +28,34 @@
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory "~/notes")
+  (org-roam-directory "~/docs/org-roam")
+  (org-roam-capture-templates
+    '(("d" "default" plain "%?"
+      :target (file+head "${slug}.org" "#+created: %<%Y-%m-%d%d:%H%M%S>\n#+title: ${title}")
+      :unnarrowed t)))
+
+  (org-roam-dailies-directory "~/docs/org-roam/dailies")
+  (org-roam-dailies-capture-templates
+   '(("d" "default" entry
+       "* %?"
+       :target (file+head "%<%Y-%m-%d>.org"
+                          "#+title: %<%Y-%m-%d>\n"))))
   :config
   (org-roam-db-autosync-mode))
 
-(use-package org-roam-ui
-  :after org-roam
-  :custom
-  (org-roam-ui-sync-theme t)
-  (org-roam-ui-follow t)
-  (org-roam-ui-update-on-save t)
-  :config
-  (org-roam-ui-mode))
+(when (daemonp)
+  (use-package org-roam-ui
+    :after org-roam
+    :custom
+    (org-roam-ui-sync-theme t)
+    (org-roam-ui-follow t)
+    (org-roam-ui-update-on-save t)
+    :config
+    (org-roam-ui-mode)))
+
+(defun org-roam-goto-todo ()
+  (interactive)
+  (org-roam-node-visit (org-roam-node-from-title-or-alias "todo") t))
 
 (use-package evil
   :demand t
@@ -55,12 +73,12 @@
   (evil-shift-width 2)
   :config
   (setq evil-default-cursor        'hbar
-  evil-normal-state-cursor   'hbar
-  evil-insert-state-cursor   'hbar
-  evil-visual-state-cursor   'hbar
-  evil-motion-state-cursor   'hbar
-  evil-replace-state-cursor  'hbar
-  evil-operator-state-cursor 'hbar)
+        evil-normal-state-cursor   'hbar
+        evil-insert-state-cursor   'hbar
+        evil-visual-state-cursor   'hbar
+        evil-motion-state-cursor   'hbar
+        evil-replace-state-cursor  'hbar
+        evil-operator-state-cursor 'hbar)
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
   (define-key evil-insert-state-map (kbd "C-v") 'cua-paste)
@@ -132,7 +150,7 @@
   :commands format-all-mode
   :hook (prog-mode . format-all-mode)
   :config
-  (setq-default format-all-formatters '(("C" (astyle "--mode=c"))
+  (setq-default format-all-formatters '(("C" (clang-format "-style=file:/home/phat_sumo/.clang-format"))
                                         ("Shell" (shfmt)))))
 
 (defun save-buffer-no-format ()
@@ -173,17 +191,6 @@
   (interactive)
   (kill-buffer)
   (delete-frame))
-
-(evil-set-leader 'normal (kbd "SPC"))
-(evil-define-key 'normal 'global (kbd "<leader>w") 'save-buffer)
-(evil-define-key 'normal 'global (kbd "<leader>W") 'save-buffer-no-format)
-(evil-define-key 'normal 'global (kbd "<leader>x") 'save-buffer-and-quit)
-(evil-define-key 'normal 'global (kbd "<leader>!") 'kill-buffer-and-frame)
-(evil-define-key 'normal 'global (kbd "<leader>q") 'quit-by-context)
-(evil-define-key 'normal 'global (kbd "<leader>Q") 'delete-window)
-(evil-define-key 'normal 'global (kbd "<leader>f") 'org-roam-capture)
-(evil-define-key 'normal 'global (kbd "<leader>%") 'split-and-follow-vertically)
-(evil-define-key 'normal 'global (kbd "<leader>\"") 'split-and-follow-horizontally)
 
   (use-package evil-numbers
     :init
@@ -516,17 +523,68 @@ called at all."
 (setq frame-inhibit-implied-resize t)
 
 (setq show-trailing-whitespace t)
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 (setq uniquify-buffer-name-style 'forward)
 
 (setq save-place-file (locate-user-emacs-file "places"))
 (save-place-mode t)
 
+(setq use-short-answers t)
+(setq use-dialog-box t)
+
+(defun delete-current-file ()
+  (interactive)
+  (if (y-or-n-p (format "delete %s?" (buffer-name)))
+      (delete-file (buffer-file-name))
+      (princ (format "spared %s" (buffer-name)))))
+
+(setq auth-source-save-behavior nil)
+
+(defun delete-array-from-list-by-first-elem (list target)
+  (dolist (item list)
+    (print item)
+    (when (equal target (aref item 0))
+      (delete item list))))
+
+(delete-array-from-list-by-first-elem jka-compr-compression-info-list "\\.g?z\\'")
+
+(add-to-list 'jka-compr-compression-info-list
+      ["\\[^\\.z].z\\'" "compressing" "gzip"
+        ("-c" "-q")
+        "uncompressing" "gzip"
+        ("-c" "-q" "-d")
+        t t "\37\213" zlib-decompress-region])
+
+(add-to-list 'jka-compr-compression-info-list
+      ["\\.gz\\'" "compressing" "gzip"
+        ("-c" "-q")
+        "uncompressing" "gzip"
+        ("-c" "-q" "-d")
+        t t "\37\213" zlib-decompress-region])
+
+(global-visual-line-mode)
+
 (make-directory "~/.config/emacs/backups" t)
 (make-directory "~/.config/emacs/autosave" t)
 (setq auto-save-file-name-transforms '((".*" "~/.config/emacs/autosave" t)))
 (setq backup-directory-alist '(("." . "~/.config/emacs/backups")))
 (setq backup-by-copying t)
+
+(evil-set-leader 'normal (kbd "SPC"))
+(evil-define-key 'normal 'global
+  (kbd "<leader>w")  'save-buffer
+  (kbd "<leader>W")  'save-buffer-no-format
+  (kbd "<leader>x")  'save-buffer-and-quit
+  (kbd "<leader>!")  'kill-buffer-and-frame
+  (kbd "<leader>q")  'quit-by-context
+  (kbd "<leader>Q")  'delete-window
+  (kbd "<leader>f")  'org-roam-node-find
+  (kbd "<leader>c")  'org-roam-capture
+  (kbd "<leader>d")  'org-roam-dailies-goto-today
+  (kbd "<leader>t")  'org-roam-goto-todo
+  (kbd "<leader>%")  'split-and-follow-vertically
+  (kbd "<leader>\"") 'split-and-follow-horizontally)
 
 (require 'bind-key)
 
@@ -548,7 +606,6 @@ Called via the `after-load-functions special hook."
     (let ((mykeys (assq 'my-keys-minor-mode minor-mode-map-alist)))
       (assq-delete-all 'my-keys-minor-mode minor-mode-map-alist)
       (add-to-list 'minor-mode-map-alist mykeys))))
-
 
 
 (defun load-conf ()
