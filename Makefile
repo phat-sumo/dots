@@ -61,6 +61,11 @@ picom:
 	@echo "configuring picom..."
 	@stow -R picom 2>&1 | grep -v $(STOW_BUG) || : 
 
+scripts:
+	@echo "configuring scripts..."
+	@cd scripts
+	@sudo make all 2>&1 | grep -v $(STOW_BUG) || : 
+
 st:
 	@echo "configuring st..."
 	@stow -R st 2>&1 | grep -v $(STOW_BUG) || : 
@@ -82,6 +87,6 @@ zsh-lite:
 	@echo "configuring zsh-lite..."
 	@stow -R zsh-lite 2>&1 | grep -v $(STOW_BUG) || : 
 
-.PHONY: ag chunkwm dmenu dunst dwm dwmblocks emacs firefox hosts htop nvim picom st vim yabai zsh
+.PHONY: ag chunkwm dmenu dunst dwm dwmblocks emacs firefox hosts htop nvim picom scripts st vim yabai zsh
 
 STOW_BUG := "BUG in find_stowed_path? Absolute/relative mismatch between Stow dir .dots and path"
